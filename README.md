@@ -7,13 +7,13 @@ Group project for COSC 4353.
 Open two terminal tabs. Start the following command ine one tab:
 
 ```bash
-npm run client
+npm run dev-client
 ```
 
 And in the second tab:
 
 ```bash
-npm run server
+npm run dev-server
 ```
 That's it!
 

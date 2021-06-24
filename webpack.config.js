@@ -29,14 +29,7 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'css-loader',
-                        options: {
-                            esModule: true,
-                            importLoaders: 1,
-                            modules: {
-                                localIdentName: '[name]__[local]',
-                            },
-                        }
+                        loader: 'css-loader'
                     },
                     {
                         loader: 'sass-loader',

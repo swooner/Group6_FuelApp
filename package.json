@@ -4,8 +4,8 @@
 	"description": "Project for COSC 4353",
 	"main": "index.js",
 	"scripts": {
-		"client": "webpack serve --config ./webpack.config.js",
-		"server": "babel-watch ./src/server/index.js"
+		"dev-client": "webpack serve --config ./webpack.config.js",
+		"dev-server": "babel-watch ./src/server/index.js"
 	},
 	"repository": {
 		"type": "git",
