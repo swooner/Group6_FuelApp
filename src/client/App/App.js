@@ -1,10 +1,11 @@
 
 import React from 'react';
+import Routes from './Routes';
 
 const App = ({ }) => {
     return (
         <div className="App">
-            This is the Fuel App!
+            <Routes />
         </div>
     )
 };
