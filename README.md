@@ -1,10 +1,10 @@
 # Group 6 COSC 4353 Project
 
-Group project for COSC 4353.
+Group project for COSC 4353 by Noble Egbulefu, Tony Hoang, and Seun Adeniji.
 
 ## Setup
 
-Open two terminal tabs. Start the following command ine one tab:
+Open two terminal tabs. Start the following command in one tab:
 
 ```bash
 npm run dev-client
