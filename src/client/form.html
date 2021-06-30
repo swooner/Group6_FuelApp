@@ -25,24 +25,6 @@
             <INPUT TYPE="hidden" NAME="burns">
             </FORM>
             
-            <SCRIPT LANGUAGE="javascript">
-            
-            var locate = window.location
-            document.joe.burns.value = locate
-            
-            var text = document.joe.burns.value
-            
-            function delineate(str)
-            {
-            theleft = str.indexOf("=") + 1;
-            theright = str.lastIndexOf("")+1;
-            last = str.substring(theleft, theright)
-            //last.str.substring('+', ' ');
-            return(last);
-            }
-            
-            
-            </SCRIPT>
         
             
             <FORM NAME="bull">
@@ -50,12 +32,8 @@
                 Delivery Address <INPUT TYPE="text"><br>
                 </FORM>
                 
-                <SCRIPT LANGUAGE="javascript">
-                var zork = delineate(text)
-                document.bull.bear.value = zork
-                </SCRIPT>                
-            
-			Delivery Date   <input type="date" required><br>   
+
+	    Delivery Date   <input type="date" required><br>   
             Suggested Price <input type="numbers"> price/gallon <br>
             Total Amount Due <input type="number" readonly> 
             <br>
