@@ -1,0 +1,117 @@
+.forgotPasswordOverlay {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include absoluteCenter;
+    z-index: 10000;
+    background-color: rgba(black, .7);
+    overflow: hidden;
+
+    &--active {
+        display: flex;
+    }
+}
+
+.forgotPasswordModal {
+    display: flex;
+    flex-direction: column;
+    @include absoluteCenter;
+    position: relative;
+    border-radius: 2rem;
+    background-color: rgba($secondary-theme-color, 1);
+    padding: 2rem;
+    color: rgba($primary-font-color, 1);
+    min-height: 65% !important;
+    max-height: 75% !important;
+    opacity: 0;
+    animation: showModal 200ms linear forwards;
+    perspective: 1000rem;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform-origin: top;
+
+    & h2 {
+        margin-top: .5rem;
+        color: darker(rgba($primary-font-color, 1), 15%);
+    }
+
+    & p {
+        display: flex;
+        flex-direction: column;
+        @include absoluteCenter;
+
+        & span {
+            margin: .5rem 0;
+            font-size: 1.3rem;
+        }
+    }
+
+    & img {
+        display: flex;
+        width: 20rem;
+        height: 20rem;
+        @include noSelect;
+    }
+
+    & input {
+        display: flex;
+        background-color: transparent !important;
+        border-bottom: .2rem solid rgba($primary-font-color, 1) !important;
+        border-radius: 0 !important;
+        width: 80% !important;
+        font-size: 1.6rem !important;
+        font-weight: 500;
+        outline: none;
+        margin-top: -1rem !important;
+        margin-bottom: 4rem !important;
+
+        &:focus {
+            box-shadow: none !important;
+            padding-left: 1rem !important;
+            border-bottom: .2rem solid rgba($primary-theme-color, 1) !important;
+        }
+    }
+
+    & div {
+        display: flex;
+        flex-direction: row;
+
+        & button {
+            @include defaultFont;
+            margin: 0 2rem;
+            font-size: 1.2rem;
+            width: 15rem;
+            height: 4rem;
+            border-radius: 5rem;
+            outline: none;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            transition: all .1s linear;
+            backface-visibility: hidden;
+            color: rgba($secondary-font-color, 1);
+
+            &:nth-of-type(1) {
+                background-color: rgba($primary-theme-color, 1);
+            }
+
+            &:nth-of-type(2) {
+                color: rgba($primary-font-color, 1);
+                background-color: rgba($secondary-theme-color, 1);
+            }
+
+            &:hover {
+                letter-spacing: .2rem;
+                transform: translateY(-.2rem);
+
+            }
+
+            &:active {
+                transform: translateY(0rem);
+            }
+        }
+    }
+
+}

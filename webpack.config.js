@@ -1,73 +1,73 @@
 
-const path = require( 'path' );
-const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-	entry: {
-		index: './src/client/index.js'
-	},
-	output: {
-		path: path.join( __dirname, '/dist' ),
-		filename: "index.bundle.js"
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader',
-				options: {
-					presets: ['@babel/preset-env']
-				}
-			},
-			{
-				test: /\.sass$/,
-				use: [
-					{
-						loader: 'style-loader',
-					},
-					{
-						loader: 'css-loader'
-					},
-					{
-						loader: 'sass-loader',
-					},
-				],
-			},
-			{
-				test: /\.css$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					"css-loader"
-				]
-			},
-			{
-				test: /\.html$/,
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							name: '[name].[ext]'
-						}
-					}
-				],
-				exclude: path.resolve( __dirname, 'src/client/index.html' )
-			}
-		]
-	},
-	devServer: {
-		port: 3001,
-		hot: true
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: './src/client/index.html',
-			inject: true,
-			chunks: ['index'],
-			filename: 'index.html'
-		})
-	]
+    entry: {
+        index: './src/client/index.js'
+    },
+    output: {
+        path: path.join(__dirname, '/dist'),
+        filename: "index.bundle.js"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
+                ],
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]'
+                        }
+                    }
+                ],
+                exclude: path.resolve(__dirname, 'src/client/index.html')
+            }
+        ]
+    },
+    devServer: {
+        port: 3001,
+        hot: true
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/client/index.html',
+            inject: true,
+            chunks: ['index'],
+            filename: 'index.html'
+        })
+    ]
 };
 
 /*
@@ -83,7 +83,7 @@ module.exports = {
         filename: 'bundle.client.js',
         publicPath: '/'
     },
-    devtool: 'inline-source-map', 
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {

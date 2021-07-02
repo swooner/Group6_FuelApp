@@ -1,0 +1,79 @@
+.dropdownMenu {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    background-color: rgba($secondary-theme-color, 1);
+    flex-direction: column;
+    border-radius: .5rem;
+    box-shadow: $general-boxshadow;
+    &--show {
+        display: flex;
+        animation: showDropdownMenu 400ms ease-in-out forwards;
+        z-index: 100;
+
+    }
+
+    &--remove {
+        animation: removeDropdownMenu 200ms ease-in-out forwards;
+        z-index: 100;
+
+    }
+}
+
+.dropdownToggle--active {
+    transition: all 200ms linear;
+    transform: rotate(-180deg);
+
+}
+
+
+.dropdownMenuAction {
+    display: none;
+    opacity: 0;
+    flex-direction: column;
+    position: absolute;
+    top: 4.5rem;
+    background-color: rgba($secondary-theme-color, 1);
+    border-radius: 1rem;
+    text-align: left !important;
+    box-shadow: $general-boxshadow;
+    transform-origin: top right;
+    z-index: 1000;
+    & a {
+        width: 100%;
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: rgba($primary-font-color, 1);
+        transition: all 150ms ease-in-out;
+        padding: .4rem 1.2rem;
+
+        &:first-of-type {
+            margin-top: 1.2rem;
+            margin-bottom: .3rem;
+        }
+
+
+        &:last-of-type {
+            margin-top: .5rem;
+            margin-bottom: 1.4rem;
+        }
+
+
+        &:hover {
+            background-color: rgba($primary-theme-color, .2);
+        }
+
+        & i {
+            font-size: 1.5rem;
+            margin-right: 1.2rem;
+        }
+    }
+
+    &--active {
+        display: flex;
+        animation: showActionMenu 200ms ease-in-out forwards;
+    }
+    &--remove {
+        animation: removeActionMenu 200ms ease-in-out forwards;
+    }
+}
