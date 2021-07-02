@@ -1,0 +1,357 @@
+@keyframes show {
+
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+@keyframes hovering {
+  0% {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.8rem 0.6rem -0.2rem darken(rgba($primary-font-color, 1), 10%);
+  }
+
+  50% {
+    transform: translateY(0rem);
+    box-shadow: 0 0.4rem 0.3rem -0.4rem darken(rgba($primary-font-color, 1), 10%);
+  }
+
+  100% {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.8rem 0.6rem -0.2rem darken(rgba($primary-font-color, 1), 10%);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(-1rem);
+  }
+
+  50% {
+    transform: translateY(0rem);
+  }
+
+  100% {
+    transform: translateY(-1rem);
+  }
+}
+
+@keyframes messageShown {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(5.5rem);
+  }
+}
+
+@keyframes messageRemove {
+  0% {
+    opacity: 1;
+    transform: translateY(5.5rem);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fillButton {
+  0% {
+    opacity: 0.5;
+    background-position: 0%;
+    box-shadow: 0 0rem 0rem rgba($primary-font-color, 1);
+  }
+
+  100% {
+    opacity: 1;
+    background-position: 100%;
+    color: rgba($secondary-font-color, 1);
+    box-shadow: 0 0.3rem 1rem rgba($primary-font-color, 1);
+  }
+}
+
+@keyframes suggestionForm {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes suggestionFormRemove {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+
+@keyframes fly {
+
+  98.001%,
+  0% {
+    display: block;
+    transform: translateX(-200%) translateY(100vh) rotateZ(0deg)
+  }
+
+  15% {
+    transform: translateX(100vw) translateY(-100%) rotateZ(180deg)
+  }
+
+  15.001%,
+  18% {
+    transform: translateX(100vw) translateY(-30%) rotateZ(0deg)
+  }
+
+  40% {
+    transform: translateX(-200%) translateY(3vh) rotateZ(-180deg)
+  }
+
+  40.001%,
+  43% {
+    transform: translateX(-200%) translateY(-100%) rotateZ(-180deg)
+  }
+
+  65% {
+    transform: translateX(100vw) translateY(50vh) rotateZ(0deg)
+  }
+
+  65.001%,
+  68% {
+    transform: translateX(20vw) translateY(-200%) rotateZ(180deg)
+  }
+
+  95% {
+    transform: translateX(10vw) translateY(100vh) rotateZ(0deg)
+  }
+}
+
+@keyframes ripple-1 {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+
+@keyframes ripple-2 {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@keyframes spin {
+  0% {
+
+
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+
+  }
+}
+
+@keyframes spinX {
+  0% {
+    transform: rotate(-360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+
+  }
+}
+
+@keyframes fill {
+  0% {
+    width: .5rem;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes sidebarTextCollapsed {
+  0% {
+    opacity: .5;
+    width: 100%
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(1rem);
+    width: 0;
+  }
+}
+
+@keyframes showModal {
+  0% {
+    opacity: 0;
+    transform: translateY(-50rem)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+
+}
+
+@keyframes removeModal {
+  0% {
+    opacity: 1;
+    transform: translateY(0rem)
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(50rem);
+  }
+
+}
+
+@keyframes showDropdownMenu {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg)
+  }
+
+  70% {
+    transform: rotateX(20deg)
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg)
+  }
+}
+
+@keyframes removeDropdownMenu {
+  0% {
+    opacity: 1;
+    transform: rotateX(0deg)
+  }
+
+  70% {
+    transform: rotateX(20deg)
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotateX(-90deg)
+  }
+}
+
+@keyframes openFilter {
+  0% {
+    opacity: 0;
+    height: 0;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding: 0rem;
+  }
+
+  100% {
+    opacity: 1;
+    height: 10rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+  }
+
+}
+
+@keyframes removeFilter {
+  0% {
+    opacity: 1;
+    height: 10rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+  }
+
+  100% {
+    opacity: 0;
+    height: 0;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding: 0rem;
+  }
+
+}
+
+@keyframes showActionMenu {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem) skewX(50deg);
+  }
+  
+  100% {
+    transform: translateX(0rem) skewX(0deg);
+    opacity: 1;
+  }
+
+}
+@keyframes removeActionMenu {
+  0% {
+    opacity: 1;
+    transform: translateX(0rem) skewX(0deg);
+  }
+  
+  100% {
+    transform: translateX(10rem) skewX(-20deg);
+    opacity: 0;
+  }
+
+}
+
+@keyframes writingPencil {
+  0% {
+    transform: translateX(0) rotate(-15deg);
+  }
+  20% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-12deg);
+  }
+  60% {
+    transform: translateX(0.8rem) rotate(-15deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}

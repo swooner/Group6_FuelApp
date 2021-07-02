@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tony Tuan Hoang">
+    <meta name="keywords" content="HTML, CSS, JavaScript, SuperFuel, Project">
+    <link rel="stylesheet" href="/index.928ba5ce.css">
+    <link rel="shortcut icon" href="/logo.5d271741.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/75996eaab7.js" crossorigin="anonymous"></script>
+    <script type="module" defer="" src="/index.2142d36c.js"></script>
+
+    <title>Super Fuel | Fuel Delivered in a Click</title>
+</head>
+
+<body>
+    <div class="login">
+
+        <div class="message">
+            <p></p>
+        </div>
+        <div class="container" id="container">
+
+            <div class="formContainer formContainer__signUpContainer">
+                <form action="#">
+                    <h1>Create Account</h1>
+                    <input type="email" placeholder="Email" id="signupEmail" autocomplete="false">
+                    <p class="errorMessage"></p>
+                    <input type="password" placeholder="Password" id="signupPassword" autocomplete="false">
+                    <p class="errorMessage"></p>
+                    <input type="password" placeholder="Password Confirm" id="signupPasswordConfirm"
+                        autocomplete="false">
+                    <p class="errorMessage"></p>
+                    <button type="submit" class="generalButton" id="signUpBtn"> Sign Up </button>
+                </form>
+            </div>
+            <div class="formContainer formContainer__signInContainer">
+                <form action="/src/pages/profile.html" id="signInForm">
+                    <h1>Sign In</h1>
+                    <input type="email" placeholder="Email" id="email" autocomplete="false" data-valid="null">
+                    <p class="errorMessage"></p>
+                    <input type="password" placeholder="Password" id="password" autocomplete="false" data-valid="null">
+                    <p class="errorMessage"></p>
+                    <a href="#forgotPassword">Forgot your password?</a>
+                    <button type="submit" class="generalButton" id="signInBtn"> Sign In </button>
+                </form>
+            </div>
+            <div class="overlayContainer">
+                <div class="overlay">
+                    <div class="overlayPanel overlayPanel__overlayLeft">
+                        <img src="/white_logo.96e630b1.png" alt="logo">
+                        <h2>Already our customer?</h2>
+                        <p>Please sign in and enjoy great quotes and discounts!</p>
+                        <button class="generalButton generalButton--empty" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlayPanel overlayPanel__overlayRight">
+                        <img src="/white_logo.96e630b1.png" alt="logo">
+                        <h2>Welcome to SuperFuel!</h2>
+                        <h3>Don't have an account?</h3>
+                        <p>Create one to start a saving journey with us</p>
+                        <button class="generalButton generalButton--empty" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

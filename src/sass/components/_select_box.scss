@@ -1,0 +1,52 @@
+.selectBox {
+    display: flex;
+    margin-right: 2rem;
+    border-radius: 2rem;
+    box-shadow: $general-boxshadow;
+    @include noSelect;
+    &__options {
+        display: flex;
+
+        &Item {
+            display: flex;
+            @include absoluteCenter;
+            @include defaultFont;
+            height: 3rem;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
+            padding: 1rem;
+            color: rgba($primary-font-color, .8);
+            background-color: #FFFFFF;
+            transition: all 100ms linear;
+
+            &:nth-of-type(1) {
+                border-top-left-radius: 2rem;
+                border-bottom-left-radius: 2rem;
+                border-right: .2rem solid rgba($primary-font-color, .1);
+            }
+
+            &:nth-of-type(3) {
+                border-top-right-radius: 2rem;
+                border-bottom-right-radius: 2rem;
+                border-left: .2rem solid rgba($primary-font-color, .1);
+
+            }
+
+            &--selected {
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            }
+
+            &:hover {
+                background-color: darken(#FFFFFF, 20%);
+
+            }
+
+            &:active {
+                background-color: darken(#FFFFFF, 20%);
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                
+            }
+        }
+    }
+}

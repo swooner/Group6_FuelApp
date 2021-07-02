@@ -1,0 +1,124 @@
+
+.notifications {
+    width: 35rem;
+    top: 6.9rem;
+    left: -10rem;
+    z-index: 10000 !important;
+    &__header {
+      @include noSelect;
+      display: flex;
+      font-size: 1.4rem;
+      padding: .8rem;
+      text-align: center;
+      border-bottom: .15rem solid rgba($primary-font-color, .2);
+  
+      & span,
+      & a {
+        display: flex;
+        @include absoluteCenter;
+        width: 10rem;
+        height: 2.5rem;
+      }
+  
+      & span {
+        margin-right: auto;
+      }
+  
+      & a {
+        letter-spacing: .1rem;
+        color: red;
+        border-radius: .4rem;
+        transition: all 100ms linear;
+  
+        &:hover {
+          background-color: rgba(red, 9);
+          color: rgba($secondary-font-color, 1);
+        }
+      }
+    }
+  
+    &__footer {
+      display: flex;
+      @include absoluteCenter;
+      border-top: .15rem solid rgba($primary-font-color, .2);
+  
+      & a {
+        display: flex;
+        @include absoluteCenter;
+        text-decoration: none;
+        font-size: 1.4rem;
+        color: darken(rgba($primary-font-color, 1), 20%);
+        width: 100%;
+        height: 4rem;
+      }
+    }
+  
+    &__list {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+  
+      &--message {
+        width: 100%;
+  
+        &:hover {
+          background-color: rgba($primary-font-color, .2);
+        }
+  
+        &:not(:last-of-type) {
+          border-bottom: .1rem solid rgba($primary-font-color, .2);
+  
+        }
+  
+        & a {
+          text-decoration: none;
+          padding: .5rem;
+        }
+  
+  
+      }
+    }
+  }
+  
+  .notificationContent {
+    display: flex;
+    width: 100%;
+  
+    &__avatar {
+      padding: .5rem;
+  
+      & img {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+      }
+    }
+  
+    &__body {
+      display: flex;
+      width: 100%;
+      font-size: 1.2rem;
+      flex-direction: column;
+      word-wrap: break-word;
+      margin-left: 1rem;
+      color: rgba($primary-font-color, 1);
+    }
+  
+    &__details {
+      & span {
+  
+        &:nth-child(1),
+        &:nth-child(3) {
+          font-weight: bold;
+        }
+      }
+    }
+  
+    &__time {
+      color: rgba($primary-font-color, .6);
+      font-weight: 600;
+      margin-top: .5rem;
+    }
+  }
