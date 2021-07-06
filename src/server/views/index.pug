@@ -1,0 +1,70 @@
+extends base
+
+block content
+    body
+        div(class="login" id="login")
+            div(class="forgotPasswordOverlay")
+                form(class="forgotPasswordModal")
+                    h1 Forgot Password?
+                    img(src="/img/forgot_password_img.png" alt="forgot_password")
+                    h2 Don't Worry
+                    p
+                        span Enter the email address associated with your account 
+                        span we will email you a link to reset your password.
+                    input(class="forgotPasswordModal__input" type="email" name="email" id="forgotPasswordEmail" placeholder="Enter Email Address")
+                    div
+                        button(type="submit" id="sendForgotPasswordEmail") Send
+                        button(type="reset" id="cancelForgotPassword") Cancel
+            div(class="container" id="container")
+                div(class="formContainer formContainer__signUpContainer")
+                    form(action="#signupUser")
+                        h1 Create Account
+                        input(type="email" placeholder="Email" id="signupEmail" autocomplete="off" data-valid='null')
+                        p(class="errorMessage")
+                        input(type="password" placeholder="Password" id="signupPassword" autocomplete="off" data-valid='null')
+                        p(class="errorMessage")
+                        input(type="password" placeholder="Password Confirm" id="signupPasswordConfirm" autocomplete="off" data-valid='null')
+                        p(class="errorMessage")
+                        button(type="submit" class="generalButton" id="signUpBtn") Sign Up
+                        div(class="passwordContainer" id="passwordSuggestion")
+                            p Password must include:
+                            span(class="passwordSuggestion__criteria")
+                                i(class="fas fa-times-circle")
+                                p The password is at least 8 characters long
+                            span(class="passwordSuggestion__criteria")
+                                i(class="fas fa-times-circle")
+                                p The password has at least one uppercase letter
+                            span(class="passwordSuggestion__criteria")
+                                i(class="fas fa-times-circle")
+                                p The password has at least one lowercase letter
+                            span(class="passwordSuggestion__criteria")
+                                i(class="fas fa-times-circle")
+                                p The password has at least one digit
+                            span(class="passwordSuggestion__criteria")
+                                i(class="fas fa-times-circle")
+                                p The password has at least one special character
+                            span(class="passwordSuggestion__criteria")
+                                i(class="fas fa-times-circle")
+                                p The password has no blank spaces
+                div(class="formContainer formContainer__signInContainer")
+                    form(id="signInForm")
+                        h1 Sign In
+                        input(type="email" placeholder="Email" id="email" autocomplete="off" data-valid='null')
+                        p(class="errorMessage")
+                        input(type="password" placeholder="Password" id="password" autocomplete="off" data-valid='null')
+                        p(class="errorMessage")
+                        a(href="#forgotPassword" id="forgotPasswordLink") Forgot your password?
+                        button(type="submit" class="generalButton" id="signInBtn") Sign In 
+                div(class="overlayContainer")
+                    div(class="overlay")
+                        div(class="overlayPanel overlayPanel__overlayLeft")
+                            img(src="/img/white_logo.png" alt="logo")
+                            h2 Already our customer?
+                            p Please sign in and enjoy great quotes and discounts!
+                            button(class="generalButton generalButton--empty" id="signIn") Sign In
+                        div(class="overlayPanel overlayPanel__overlayRight")
+                            img(src="/img/white_logo.png" alt="logo")
+                            h2 Welcome to SuperFuel!
+                            h3 Don't have an account?
+                            p Create one to start a saving journey with us
+                            button(class="generalButton generalButton--empty" id="signUp") Sign Up

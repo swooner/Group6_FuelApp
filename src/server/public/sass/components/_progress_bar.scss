@@ -1,0 +1,21 @@
+.progressBar {
+    height: 100%;
+
+    &--1 {
+
+        background-color: rgba(#1B62CC, .5);
+    }
+
+    &--2 {
+        background-color: rgba(#22CC62, .5);
+    }
+
+    &--3 {
+        background-color: rgba(#ff2600, .5);
+    }
+
+    &--4 {
+        background-color: rgba(#ff00c8, .5);
+    }
+
+}
