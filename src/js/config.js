@@ -1,1 +1,0 @@
-export const API_URL = `https://react-http-7fe88-default-rtdb.firebaseio.com/user.json`;
