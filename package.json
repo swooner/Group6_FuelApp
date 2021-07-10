@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/client/pages/index.html",
-    "production": "parcel build index.html",
+    "production": "parcel build src/client/pages/index.html",
     "devServer": "live-server",
-    "watch": "sass src/client/sass/main.scss src/client/css/styles.css --watch",
+    "watch": "sass src/client/scss/main.scss src/client/css/styles.css --watch",
     "dev": "npm-run-all --parallel devServer watch"
   },
   "author": "Tony Tuan Hoang",

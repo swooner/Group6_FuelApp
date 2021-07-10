@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "CustomWebFont";
+  src: url("/src/client/font/CircularStdMedium500.ttf");
+  /* IE9 Compat Modes */
+  font-weight: normal;
+  font-style: normal;
+}
+.card {
+  display: flex;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 0.3rem 0.6rem, rgba(0, 0, 0, 0.23) 0 0.3rem 0.6rem;
+}
+
+.responsiveTable {
+  display: flex;
+}
+.responsiveTable table {
+  border-collapse: collapse;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "CustomWebFont";
+  color: #434343;
+}
+@media (max-width: 15em) {
+  html {
+    font-size: 10%;
+  }
+}
+@media (max-width: 48em) {
+  html {
+    font-size: 30%;
+  }
+}
+@media (max-width: 90em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+::selection {
+  font-family: "CustomWebFont";
+}
+
+/*# sourceMappingURL=styles.css.map */

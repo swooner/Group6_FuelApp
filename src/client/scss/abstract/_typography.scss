@@ -1,1 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@font-face {
+    font-family: 'CustomWebFont';
+    src: url('/src/client/font/CircularStdMedium500.ttf');
+    /* IE9 Compat Modes */
+    font-weight: normal;
+    font-style: normal;
+}

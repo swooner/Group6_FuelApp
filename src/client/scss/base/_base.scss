@@ -8,6 +8,8 @@
 
 html {
     font-size: 62.5%;
+    @include defaultFont;
+    color: rgba($primary-font-color, 1);
 
     @include responsive(phone) {
         font-size: 10%;
@@ -24,4 +26,5 @@ html {
 
 ::selection {
     //Selection color and style
+    @include defaultFont;
 }

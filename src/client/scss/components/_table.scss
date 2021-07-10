@@ -1,0 +1,6 @@
+.responsiveTable {
+    display: flex;
+    & table {
+        border-collapse: collapse;
+    }
+}
