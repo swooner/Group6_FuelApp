@@ -1,4 +1,147 @@
 extends base
 
 block content
-    include _header
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="dashboard")
+                    div(class="row")
+                        div(class="card")
+                            div(class="card__body")
+                                div(class="card__bodyHeader")
+                                    div(class="card__bodyHeaderIcon card__bodyHeaderIcon--1")
+                                        i(class="fas fa-users")
+                                    div(class="card__bodyHeaderCount")
+                                        div(class="card__bodyHeaderCount--title")
+                                            p Customers
+                                        div(class="card__bodyHeaderCount--amount")
+                                            p 1,000
+                                div(class="card__bodyContent")
+                                    div(title="10%" class="progressBar progressBar--1" style="width: 10%")
+                                div(class="card__bodyFooter")
+                                    div(class="card__bodyFooterStatus card__bodyFooterStatus--good")
+                                        i(class="fas fa-arrow-up")
+                                        span 50.00%
+                                    div(class="card__bodyFooterPeriod")
+                                        p Since last week
+                        div(class="card")
+                            div(class="card__body")
+                                div(class="card__bodyHeader")
+                                    div(class="card__bodyHeaderIcon card__bodyHeaderIcon--2")
+                                        i(class="fas fa-dollar-sign")
+                                    div(class="card__bodyHeaderCount")
+                                        div(class="card__bodyHeaderCount--title")
+                                            p Invoices
+                                        div(class="card__bodyHeaderCount--amount")
+                                            p $1,000.00
+                                div(class="card__bodyContent")
+                                    div(title="70%" class="progressBar progressBar--2" style="width: 70%")
+                                div(class="card__bodyFooter")
+                                    div(class="card__bodyFooterStatus card__bodyFooterStatus--bad")
+                                        i(class="fas fa-arrow-down")
+                                        span 50.00%
+                                    div(class="card__bodyFooterPeriod")
+                                        p Since last week
+                        div(class="card")
+                            div(class="card__body")
+                                div(class="card__bodyHeader")
+                                    div(class="card__bodyHeaderIcon card__bodyHeaderIcon--3")
+                                        i(class="far fa-credit-card")
+                                    div(class="card__bodyHeaderCount")
+                                        div(class="card__bodyHeaderCount--title")
+                                            p Payments
+                                        div(class="card__bodyHeaderCount--amount")
+                                            p $1,000.00
+                                div(class="card__bodyContent")
+                                    div(title="50%" class="progressBar progressBar--3" style="width: 50%")
+                                div(class="card__bodyFooter")
+                                    div(class="card__bodyFooterStatus card__bodyFooterStatus--good")
+                                        i(class="fas fa-arrow-up")
+                                        span 50.00%
+                                    div(class="card__bodyFooterPeriod")
+                                        p Since last week
+                        div(class="card")
+                            div(class="card__body")
+                                div(class="card__bodyHeader")
+                                    div(class="card__bodyHeaderIcon card__bodyHeaderIcon--4")
+                                        i(class="fas fa-file-alt")
+                                    div(class="card__bodyHeaderCount")
+                                        div(class="card__bodyHeaderCount--title")
+                                            p Quotes
+                                        div(class="card__bodyHeaderCount--amount")
+                                            p $1,000.00
+                                div(class="card__bodyContent")
+                                    div(title="20%" class="progressBar progressBar--4" style="width: 20%")
+                                div(class="card__bodyFooter")
+                                    div(class="card__bodyFooterStatus card__bodyFooterStatus--bad")
+                                        i(class="fas fa-arrow-down")
+                                        span 50.00%
+                                    div(class="card__bodyFooterPeriod")
+                                        p Since last week
+                    div(class="row")
+                        div(class="card cardChart cardChart--1")
+                            div(class="cardChart__header")
+                                h4(class="cardChar__headerTitle") Customers Analytics
+                                div(class="selectBox")
+                                    div(class="selectBox__options")
+                                        button(class="selectBox__optionsItem selectBox__optionsItem--selected" data-period="weekly") Weekly
+                                        button(class="selectBox__optionsItem" data-period="monthly") Monthly
+                                        button(class="selectBox__optionsItem" data-period="yearly") Yearly
+                            div(class="cardChart__content")
+                                div(class="cardChart__contentSummary cardChart__contentSummary--1")
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            p Total Customers
+                                        span(class="cardChart__contentSummaryItemAmount")
+                                            p 1000
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            p New Customers
+                                        <span class="cardChart__contentSummaryItemAmount">
+                                            p 1000
+                                div(class="cardChart__contentChart")
+                                    canvas(id="customersAnalyticsChart")
+                        div(class="card cardChart cardChart--2")
+                            div(class="cardChart__header")
+                                h4(class="cardChar__headerTitle")
+                                    p Invoices Analytics
+                                div(class="selectBox")
+                                    div(class="selectBox__options")
+                                        button(class="selectBox__optionsItem selectBox__optionsItem--selected" data-period="weekly") Weekly
+                                        button(class="selectBox__optionsItem" data-period="monthly") Monthly
+                                        button(class="selectBox__optionsItem" data-period="yearly")  Yearly
+                            div(class="cardChart__content")
+                                div(class="cardChart__contentChart")
+                                    canvas(id="invoicesAnalyticsChart")
+                                div(class="cardChart__contentSummary cardChart__contentSummary--2")
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            i(class="fas fa-circle") Total Invoices
+                                        span(class="cardChart__contentSummaryItemAmount")
+                                            p $1,000.00
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            i(class="fas fa-circle") Sent
+                                        span(class="cardChart__contentSummaryItemAmount")
+                                            p $1,000.00
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            i(class="fas fa-circle") Pending
+                                        span(class="cardChart__contentSummaryItemAmount")
+                                            p $1,000.00
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            i(class="fas fa-circle") Overdue
+                                        span(class="cardChart__contentSummaryItemAmount")
+                                            p $1,000.00
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            i(class="fas fa-circle") Paid
+                                        span(class="cardChart__contentSummaryItemAmount")
+                                            p $1,000.00
+                                    div(class="cardChart__contentSummaryItem")
+                                        span(class="cardChart__contentSummaryItemTitle")
+                                            i(class="fas fa-circle") Unpaid
+                                        span(class="cardChart__contentSummaryItemAmount") $1,000.00

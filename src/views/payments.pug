@@ -1,0 +1,153 @@
+extends base
+
+block content
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="payments")
+                    div(class="contentHeader")
+                        div(class="contentHeader__title contentHeader__invoiceTitle")
+                            span Payments
+                            div(class="contentHeader__breadcrumb")
+                                ul(class="breadcrumb")
+                                    li(class="breadcrumb__item")
+                                        a(href="/src/pages/dashboard.html") Dashboard
+                                    li(class="breadcrumb__item breadcrumb__item--active")
+                                        p Payments
+                        div(class="contentHeader__control")
+                            button(class="contentHeader__controlButton")
+                                a(href="/add_customer")
+                                    i(class="fas fa-plus")
+                            button(class="contentHeader__controlButton")
+                                a
+                                    i(class="fas fa-filter")
+                    div(class="row")
+                        form(class="contentFilter contentFilter__invoice")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByName") Invoice Number
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByInvoiceNumber")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByEmail") Status
+                                select(id="filterByInvoiceStatus" class="contentFilter__criteriaValue")
+                                    option(selected disabled) Select Status
+                                    option(value="sent") Sent
+                                    option(value="viewed") Viewed
+                                    option(value="paid") Paid
+                                    option(value="partiallypaid") Partially Paid
+                                    option(value="overdue") Overdue
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber") From
+                                input(class="contentFilter__criteriaValue" type="date" id="filterByInvoiceFromDate")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber") To
+                                input(class="contentFilter__criteriaValue" type="date" id="filterByInvoiceToDate")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber") Invoice Number
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByInvoiceNumber")
+                    div(class="table")
+                        div(class="table__header")
+                            div(class="totalEntriesSelection")
+                                span Show
+                                select(id="totalEntries")
+                                    option(value="10") 10
+                                    option(value="25") 25
+                                    option(value="50") 50
+                                    option(value="100") 100
+                                span invoices
+                        div(class="table__content")
+                            table
+                                thead(class="table__contentHeader")
+                                    tr
+                                        th
+                                            div
+                                                span Payment ID
+                                                div(lass="sort")
+                                                    button(class="sortingButton" data-sortby="paymentidup")
+                                                    i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="paymentiddown")
+                                                    i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Customer
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="customerup")
+                                                    i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="customerdown")
+                                                    i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Amount
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="amountup")
+                                                    i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="amountdown")
+                                                    i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Date
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="dateup")
+                                                    i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="datedown")
+                                                    i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Payment Method
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="paymentmethodup")
+                                                    i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="paymentmethoddown")
+                                                    i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            span Action
+                                tbody(class="table__contentBody table__contentPaymentBody")
+                                    tr
+                                        td
+                                            a(href="/view_payment/123ABCZ456") #123ABCZ456
+                                        td
+                                            div(class="table__contentCustomerDetail")
+                                                div
+                                                    img(class="customerImage" src="img/user_profile.jpg" alt="customer_img")
+                                                div(class="table__contentCustomerDetailInfo")
+                                                    span
+                                                        a(href="/profile/1" data-customer-id="1") Full Name                                                    
+                                                    span +1 (713) 367 2499
+                                        td
+                                            span $1,000,000.00
+                                        td
+                                            span June 28, 2021
+
+                                        td
+                                            span Visa
+                                            
+                                            span 9116
+                                        td
+                                            div
+                                                a(class="downloadPayment" data-payment-id="#123456" href="#")
+                                                    i(class="fas fa-download")
+                                                    span PDF
+                                                a(href="/view_invoice/123456")
+                                                    i(class="far fa-eye")
+                                                    span View
+                        div(class="table__footer")
+                            div(class="table__footerData")
+                                span Showing
+                                span 1
+                                span to
+                                span 10
+                                span of
+                                span 100
+                                span entries
+                            ul(class="pagination")
+                                li(class="pagination__button pagination__buttonPrevious pagination__buttonDisabled")
+                                    a(class="pagination__link" href="#") Previous
+                                li(class="pagination__button pagination__item pagination__item--active")
+                                    a(class="pagination__link" data-pagenumber="1" href="#") 1
+                                li(class="pagination__button pagination__item")
+                                    a(class="pagination__link" data-pagenumber="2" href="#") 2
+                                li(class="pagination__button pagination__item")
+                                    a(class="pagination__link" data-pagenumber="3" href="#") 3
+                                li(class="pagination__button pagination__buttonNext ")
+                                    a(class="pagination__link" href="#") Next

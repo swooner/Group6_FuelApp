@@ -1,0 +1,148 @@
+extends base
+
+block content
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="customers")
+                    div(class="contentHeader")
+                        div(class="contentHeader__title")
+                            span Customers
+                            div(class="contentHeader__breadcrumb")
+                                ul(class="breadcrumb")
+                                    li(class="breadcrumb__item")
+                                        a(href="/src/pages/dashboard.html") Dashboard
+                                    li(class="breadcrumb__item breadcrumb__item--active")
+                                        p Customers
+                        div(class="contentHeader__control")
+                            button(class="contentHeader__controlButton")
+                                a(href="/src/pages/add_customer.html")
+                                    i(class="fas fa-plus")
+                            button(class="contentHeader__controlButton")
+                                a
+                                 i(class="fas fa-filter")
+                    div(class="row")
+                        form(class="contentFilter")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByName") Name
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByName")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByEmail") Email
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByEmail")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber") Phone
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByPhoneNumber")
+                    div(class="table")
+                        div(class="table__header")
+                            div(class="totalEntriesSelection")
+                                span Show
+
+                                select(id="totalEntries")
+                                    option(value="10") 10
+                                    option(value="25") 25
+                                    option(value="50") 50
+                                    option(value="100") 100
+
+                                span customers
+                        div(class="table__content")
+                            table
+                                thead(class="table__contentHeader")
+                                    <tr>
+                                        th
+                                            div
+                                                span Customer
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="customerup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="customerdown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Email
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="emailup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="emaildown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Registered On
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="registeredup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="registereddown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Location
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="locationup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="locationdown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Amount Paid
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="amountpaidup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="amountpaiddown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Status
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="statusup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="statusdown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th(class="sort") Actions
+                                tbody(class="table__contentBody")
+                                    tr
+                                        td
+                                            div(class="table__contentCustomerDetail")
+                                                div
+                                                    img(class="customerImage" src="/img/user_profile.jpg" alt="customer_img")
+                                                div(class="table__contentCustomerDetailInfo")
+                                                    span
+                                                        a(href="/src/pages/profile.html" data-customer-id="1") Full Name                    
+                                                    span +1 (713) 367 2499
+                                        td maybethisisthelongestemail@gmail.com
+                                        td 22 Feb 2021
+                                        td Houston, TX
+                                        td $1,000,000.00
+                                        td
+                                            div
+                                                span(class="registeredStatus registeredStatus--active") Active
+                                        td
+                                            div(class="customerControl")
+                                                button(class="customerControlButton customerControlButton--edit" data-customer-id="1")
+                                                    i(class="far fa-edit") Edit
+
+                                                button(class="customerControlButton customerControlButton--delete" data-customer-id="1")
+                                                    i(class="far fa-trash-alt") Delete
+                        div(class="table__footer")
+                            div(class="table__footerData")
+                                span Showing
+                                span 1
+                                span to
+                                span 10
+                                span of
+                                span 100
+                                span entries
+                            ul(class="pagination")
+                                li(class="pagination__button pagination__buttonPrevious pagination__buttonDisabled")
+                                    a(class="pagination__link" href="#") Previous
+                                li(class="pagination__button pagination__item pagination__item--active")
+                                    a(class="pagination__link" data-pagenumber="1" href="#") 1
+                                    
+                                li(class="pagination__button pagination__item")
+                                    a(class="pagination__link" data-pagenumber="2" href="#") 2
+                                    
+                                li(class="pagination__button pagination__item")
+                                    a(class="pagination__link" data-pagenumber="3" href="#") 3
+                                    
+                                li(class="pagination__button pagination__buttonNext")
+                                    a(class="pagination__link" href="#") Next

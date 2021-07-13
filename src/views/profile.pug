@@ -1,0 +1,98 @@
+extends base
+
+block content
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="profile")
+                    div(class="contentHeader")
+                        div(class="contentHeader__title contentHeader__invoiceTitle")
+                            span Profile
+                            div(class="contentHeader__breadcrumb")
+                                ul(class="breadcrumb")
+                                    li(class="breadcrumb__item")
+                                        a(href="/src/pages/dashboard.html") Dashboard
+                                    li(class="breadcrumb__item breadcrumb__item--active")
+                                        p Profile
+                    div(class="profileHeader")
+                        div(class="profileHeader__image")
+                            img(src="/img/user_profile.jpg" alt="user_profile_image" class="userProfileImage userProfileImage--large")
+                        div(class="profileHeader__name")
+                            span Full Name
+                        div(class="profileHeader__generalInfo")
+                            div
+                                i(class="far fa-building")
+                                span SomeCompany Name Ltd.
+                            div
+                                i(class="fas fa-map-marker-alt")
+                                span Houston, TX
+                            div
+                                i(class="far fa-calendar-alt")
+                                span Joined December 2020
+                    div(class="profileContent")
+                        div(class="profileContent__detail")
+                            div(class="profileContent__completion")
+                                span Profile Completion:
+                                span  100% 
+                                div(class="profileContent__progressBar profileContent__progressBar--percentage")
+                                    div(title="100%" class="progressBar" style="width: 100%" data-current-percentage="100%")
+                            div(class="profileContent__personalInfo")
+                                div(class="profileContent__personalInfoHeader")
+                                    span Profile
+                                    button
+                                        a(href="/settings/1" data-user-id="1")
+                                            i(class="fas fa-pen-fancy")
+                                            span Edit
+                                div(class="profileContent__personalInfoBody")
+                                    div(class="profileContent__personalInfoItem")
+                                        h2 Contact
+                                        div
+                                            h2 Email:
+                                            span useremail@company.com
+                                        div
+                                            h2 Phone Number:
+                                            span +1 (123) 456 - 7891
+                                    div(class="profileContent__personalInfoItem")
+                                        h2 Address:
+                                        div
+                                            div
+                                                span Street:
+                                                span 12345 Some Street and long Dr.
+                                            div
+                                                span City:
+                                                span Houston
+                                            div
+                                                span State:
+                                                span TX
+                                            div
+                                                span Zipcode:
+                                                span 77077
+                                            div
+                                                span Country:
+                                                span United States
+                        div(class="profileContent__history")
+                            div(class="profileContent__historyHeader")
+                                h2 Quote History
+                                div(class="profileContent__request")
+                                    button(class="profileContent__requestButton")
+                                        a(href="/settings/id") Complete Your Profile
+                                        a(href="#") New Fuel Quote
+                            div(class="profileContent__historyActivities")
+                                ul(class="historyActivities")
+                                    li(class="historyActivities__item")
+                                        div(class="historyActivities__itemInfo")
+                                            span(class="historyActivities__itemDate") Jun 30, 2021
+                                            div(class="historyActivities__itemEvent")
+                                                span Full Name
+                                                span paid for the invoice
+                                                span #DF33040
+                                    li(class="historyActivities__item")
+                                        div(class="historyActivities__itemInfo")
+                                            span(class="historyActivities__itemDate") Jun 31, 2021
+                                            div(class="historyActivities__itemEvent")
+                                                span Full Name
+                                                span paid for the invoice
+                                                span #DF33040
+

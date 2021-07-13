@@ -1,0 +1,140 @@
+extends base
+
+block content
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="settings")
+                    div(class="contentHeader")
+                        div(class="contentHeader__title")
+                            span Settings
+                            div(class="contentHeader__breadcrumb")
+                                ul(class="breadcrumb")
+                                    li(class="breadcrumb__item")
+                                        a(href="/dashboard") Dashboard
+                                    li(class="breadcrumb__item breadcrumb__item--active")
+                                        p Profile Settings
+                    div(class="accountSettings")
+                        div(class="accountSettings__menu")
+                            ul
+                                li(class="accountSettings__menuItem accountSettings__menuItem--active ")
+                                    a(href="/settings")
+                                        i(class="fas fa-user-cog") Profile Information
+                                li(class="accountSettings__menuItem")
+                                    a(href="/change_password")
+                                        i(class="fas fa-unlock-alt") Change Password
+                                li(class="accountSettings__menuItem")
+                                    a(href="/delete_account")
+                                        i(class="fas fa-ban") Delete Account
+                        div(class="accountSettings__component")
+                            div(class="accountSettings__componentHeader")
+                                span Basic Information
+                            form(class="accountSettings__Form")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_image") Photo
+                                    div(class="accountSettings__FormGroupUserPhoto")
+                                        label(for="edit_profile_image")
+                                            img(src="img/user_profile.jpg" alt="user_photo" class="settingInfo__userphoto")
+                                            input(type="file" id="edit_profile_image")
+                                            span
+                                                i(class="fas fa-pencil-alt")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_firstName") First Name
+                                    div
+                                        input(type="text" id="settingInfo_firstName")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_lastName") Last Name
+                                    div
+                                        input(type="text" id="settingInfo_lastName")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_companyName") Company Name
+                                    div
+                                        input(type="text" id="settingInfo_companyName")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_email") Email
+                                    div
+                                        input(type="email" id="settingInfo_email")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_phoneNumber") Phone Number
+                                    div
+                                        input(type="text" id="settingInfo_phoneNumber")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_streetNumber") Street Number
+                                    div
+                                        input(type="text" id="settingInfo_streetNumber")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_streetName") Street Name
+                                    div
+                                        input(type="text" id="settingInfo_streetName")
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_city") City
+                                    div
+                                        input(type="text" id="settingInfo_city")
+                                div(class="accountSettings__FormGroup" id="accountSettings__FormGroupStates")
+                                    label(for="settingInfo_state") State
+                                    div
+                                        select(name="settingInfo_state" id="settingInfo_state")
+                                            option(value="" selected disable) Select a State
+                                            option(value="AL") Alabama
+                                            option(value="AK") Alaska
+                                            option(value="AZ") Arizona
+                                            option(value="AR") Arkansas
+                                            option(value="CA") California
+                                            option(value="CO") Colorado
+                                            option(value="CT") Connecticut
+                                            option(value="DE") Delaware
+                                            option(value="DC") District Of Columbia
+                                            option(value="FL") Florida
+                                            option(value="GA") Georgia
+                                            option(value="HI") Hawaii
+                                            option(value="ID") Idaho
+                                            option(value="IL") Illinois
+                                            option(value="IN") Indiana
+                                            option(value="IA") Iowa
+                                            option(value="KS") Kansas
+                                            option(value="KY") Kentucky
+                                            option(value="LA") Louisiana
+                                            option(value="ME") Maine
+                                            option(value="MD") Maryland
+                                            option(value="MA") Massachusetts
+                                            option(value="MI") Michigan
+                                            option(value="MN") Minnesota
+                                            option(value="MS") Mississippi
+                                            option(value="MO") Missouri
+                                            option(value="MT") Montana
+                                            option(value="NE") Nebraska
+                                            option(value="NV") Nevada
+                                            option(value="NH") New Hampshire
+                                            option(value="NJ") New Jersey
+                                            option(value="NM") New Mexico
+                                            option(value="NY") New York
+                                            option(value="NC") North Carolina
+                                            option(value="ND") North Dakota
+                                            option(value="OH") Ohio
+                                            option(value="OK") Oklahoma
+                                            option(value="OR") Oregon
+                                            option(value="PA") Pennsylvania
+                                            option(value="RI") Rhode Island
+                                            option(value="SC") South Carolina
+                                            option(value="SD") South Dakota
+                                            option(value="TN") Tennessee
+                                            option(value="TX") Texas
+                                            option(value="UT") Utah
+                                            option(value="VT") Vermont
+                                            option(value="VA") Virginia
+                                            option(value="WA") Washington
+                                            option(value="WV") West Virginia
+                                            option(value="WI") Wisconsin
+                                            option(value="WY") Wyoming
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_zipcode") Zipcode
+                                    div
+                                        input(id="settingInfo_zipcode" type="number" maxlength="5" required)
+                                div(class="accountSettings__FormGroup")
+                                    label(for="settingInfo_country") Country
+                                    div
+                                        input(type="text" id="settingInfo_country" value="United States")
+                                div(class="accountSettings__FormGroup")
+                                    button(class="accountSettings__FormGroupSubmitButton" type="submit" id="updateNewInformation") Save Changes

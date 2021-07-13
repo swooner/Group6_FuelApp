@@ -1,0 +1,184 @@
+extends base
+
+block content
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="invoices")
+                    div(class="contentHeader")
+                        div(class="contentHeader__title contentHeader__invoiceTitle")
+                            span Invoices
+                            div(class="contentHeader__breadcrumb")
+                                ul(class="breadcrumb")
+                                    li(class="breadcrumb__item")
+                                        a(href="/src/pages/dashboard.html") Dashboard
+                                    li(class="breadcrumb__item breadcrumb__item--active")
+                                        p Invoices
+                        div(class="contentHeader__control")
+                            button(class="contentHeader__controlButton")
+                                a(href="/src/pages/add_customer.html")
+                                    i(class="fas fa-plus")
+                            button(class="contentHeader__controlButton")
+                                a
+                                    i(class="fas fa-filter")
+                    div(class="row")
+                        form(class="contentFilter contentFilter__invoice")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByName") Customer
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByInvoiceCustomer")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByEmail") Status
+                                select(id="filterByInvoiceStatus" class="contentFilter__criteriaValue")
+                                    option(selected disabled) Select Status
+                                    option(value="sent") Sent
+                                    option(value="viewed") Viewed
+                                    option(value="paid") Paid
+                                    option(value="partiallypaid") Partially Paid
+                                    option(value="overdue") Overdue
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber") From
+                                input(class="contentFilter__criteriaValue" type="date" id="filterByInvoiceFromDate")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber") To
+                                input(class="contentFilter__criteriaValue" type="date" id="filterByInvoiceToDate")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByPhoneNumber">Invoice) Number
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByInvoiceNumber")
+                    div(class="table")
+                        div(class="table__header")
+                            div(class="totalEntriesSelection")
+                                span Show
+                                select(id="totalEntries")
+                                    option(value="10") 10
+                                    option(value="25") 25
+                                    option(value="50") 50
+                                    option(value="100") 100
+                                span invoices
+                        div(class="table__content")
+                            table
+                                thead(class="table__contentHeader table__contentInvoiceHeader")
+                                    tr
+                                        th
+                                            div
+                                                span Invoice Number
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="invoiceup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="invoicedown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Customer
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="customerup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="customerdown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Created Date
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="createddateup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="createddatedown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Amount
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="amountdueup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="amountduedown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Due Date
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="duedateup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="duedatedown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Status
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="statusup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="statusdown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            div
+                                                span Paid On
+                                                div(class="sort")
+                                                    button(class="sortingButton" data-sortby="paiddateup")
+                                                        i(class="fas fa-long-arrow-alt-up")
+                                                    button(class="sortingButton" data-sortby="paiddatedown")
+                                                        i(class="fas fa-long-arrow-alt-down")
+                                        th
+                                            span Action
+                                tbody(class="table__contentBody table__contentInvoiceBody")
+                                    tr
+                                        td
+                                            a(href="/view_invoice/INV-123ABCZ456" data-inv-number="INV-123ABCZ456") INV-123ABCZ456
+                                        td
+                                            div(class="table__contentCustomerDetail")
+                                                div
+                                                    img(class="customerImage" src="/img/user_profile.jpg" alt="customer_img")
+                                                div(class="table__contentCustomerDetailInfo")
+                                                    span
+                                                        a(href="/profile" data-customer-id="1") Full Name
+                                                    span +1 (713) 367 2499
+                                        td
+                                            span June 28, 2021
+                                        td
+                                            span $1,000,000.00
+                                        td
+                                            span July 15, 2021
+                                        td
+                                            span(class="quoteStatus quoteStatus--accepted") Paid
+                                        td
+                                            June 30, 2021
+                                        td
+                                            a(href="#" class="dropdownMenuAction__button")
+                                                i(class="fas fa-ellipsis-h")
+                                            div(class="dropdownMenuAction")
+                                                a(href="/src/pages/edit_invoice.html" data-invoice-id="INV-123ABCZ456")
+                                                    i(class="fas fa-file-signature")
+                                                    span Edit
+                                                a(href="/src/pages/view_invoice.html" data-invoice-id="INV-123ABCZ456")
+                                                    i(class="fas fa-eye")
+                                                    span View
+                                                a(href="/src/pages/edit_invoices.html" data-invoice-id="INV-123ABCZ456")
+                                                    i(class="far fa-trash-alt")
+                                                    span Delete
+                                                a(href="#" data-invoice-id="INV-123ABCZ456")
+                                                    i(class="fas fa-envelope-open-text")
+                                                    span Mark as Sent
+                                                a(href="#" data-invoice-id="INV-123ABCZ456")
+                                                    i(class="far fa-paper-plane")
+                                                    span Send Invoice
+                        div(class="table__footer")
+                            div(class="table__footerData")
+                                span Showing
+                                span 1
+                                span to
+                                span 10
+                                span of
+                                span 100
+                                span entries
+                            ul(class="pagination")
+                                li(class="pagination__button pagination__buttonPrevious pagination__buttonDisabled")
+                                    a(class="pagination__link" href="#") Previous
+                                li(class="pagination__button pagination__item pagination__item--active")
+                                    a(class="pagination__link" data-pagenumber="1" href="#") 1
+                                    
+                                li(class="pagination__button pagination__item")
+                                    a(class="pagination__link" data-pagenumber="2" href="#") 2
+                                    
+                                li(class="pagination__button pagination__item")
+                                    a(class="pagination__link" data-pagenumber="3" href="#") 3
+                                    
+                                li(class="pagination__button pagination__buttonNext ")
+                                    a(class="pagination__link" href="#") Next

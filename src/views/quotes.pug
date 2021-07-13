@@ -1,0 +1,88 @@
+extends base
+
+block content
+    body
+        div(class="pageWrapper")
+            include _header
+            div(class="pageContent")
+                include _sidebar
+                div(class="content content--active" id="quotes")
+                    div(class="contentHeader")
+                        div(class="contentHeader__title")
+                            span Quotes
+                            div(class="contentHeader__breadcrumb")
+                                ul(class="breadcrumb")
+                                    li(class="breadcrumb__item")
+                                        a(href="/dashboard") Dashboard
+                                    li(class="breadcrumb__item breadcrumb__item--active")
+                                        p Quotes
+                        div(class="contentHeader__control")
+                            button(class="contentHeader__controlButton")
+                                a(href="/src/pages/add_quote.html")
+                                    i(class="fas fa-plus")
+                            button(class="contentHeader__controlButton")
+                                a
+                                    i(class="fas fa-filter")
+                    div(class="row")
+                        form(class="contentFilter")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByName") Name
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByName")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByQuoteNumber") Number
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByQuoteNumber")
+                            div(class="contentFilter__criteria")
+                                label(for="filterByQuoteAmount") Amount
+                                input(class="contentFilter__criteriaValue" type="text" id="filterByQuoteAmount")
+                    div(class="row")
+                        table(class="quoteTable")
+                            thead(class="quoteTable__header")
+                                tr
+                                    th Quote Number
+                                    th Customer
+                                    th Quote Date
+                                    th Expiry Date
+                                    th Amount
+                                    th Status
+                                    th Action
+                            tbody(class="quoteTable__body")
+                                tr
+                                    td
+                                        a(href="/src/pages/view_quote.html" data-invoice-number="QUO-17ER281") QUO-17ER281
+                                    td
+                                        a(href="/src/pages/profile.html/1" data-customer-id="1")
+                                            img(class="customerImage" src="img/user_profile.jpg" alt="customers_img")
+                                            span Full Name
+                                    td June 28, 2021
+                                    td July 05, 2021
+                                    td $1,000,000.00
+                                    td 
+                                        span(class="quoteStatus quoteStatus--expired") Expired
+                                    td
+                                        a(href="#" class="dropdownMenuAction__button")
+                                            i(class="fas fa-ellipsis-h")
+                                        div(class="dropdownMenuAction")
+                                            a(href="/src/pages/edit_quote.html" data-quote-id="QUO-17ER281")
+                                                i(class="fas fa-file-signature")
+                                                span Edit
+                                            a(href="/src/pages/edit_quote.html" data-quote-id="QUO-17ER281")
+                                                i(class="far fa-trash-alt")
+                                                span Delete
+                                            a(href="/src/pages/view_quote.html" data-quote-id="QUO-17ER281")
+                                                i(class="fas fa-eye")
+                                                span View
+                                            a(href="#" data-quote-id="QUO-17ER281")
+                                                i(class="fas fa-file-signature")
+                                                span Produce Invoice
+                                            a(href="#" data-quote-id="QUO-17ER281")
+                                                i(class="fas fa-envelope-open-text")
+                                                span Mark as Sent
+                                            a(href="#" data-quote-id="QUO-17ER281")
+                                                i(class="far fa-paper-plane")
+                                                span Send Estimate
+                                            a(href="#" data-quote-id="QUO-17ER281")
+                                                i(class="far fa-check-circle")
+                                                span Mark as Accepted
+                                            a(href="/src/pages/edit_quote.html/" data-quote-id="QUO-17ER281")
+                                                i(class="far fa-times-circle")
+                                                span Mark as Rejected
