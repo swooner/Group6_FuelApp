@@ -32,19 +32,19 @@ export const loginUser = async function (credential) {
 };
 validatedInput();
 if (signInBtn) {
-  if (signInBtn.disabled === false) {
-    signInBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const email = _id("email");
-      const password = _id("password");
-      const credential = {
-        email: email.value,
-        password: password.value,
-      };
-      loginUser(credential);
-      email.value = "";
-      password.value = "";
-    });
-  }
+  // if (signInBtn.disabled === false) {
+  //   signInBtn.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     const email = _id("email");
+  //     const password = _id("password");
+  //     const credential = {
+  //       email: email.value,
+  //       password: password.value,
+  //     };
+  //     loginUser(credential);
+  //     email.value = "";
+  //     password.value = "";
+  //   });
+  // }
 
 }

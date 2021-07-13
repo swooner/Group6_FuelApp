@@ -161,22 +161,22 @@
                             </span>
                         </div>
                         <h2 class="newFuelQuote__bodyHeader">Request Details</h2>
-                        <form class="newFuelQuote__requestForm">
+                        <form action="/quote/request" method="post" class="newFuelQuote__requestForm">
                             <div class="newFuelQuote__requestFormItem">
                                 <label for="newFuelQuote__gallonRequested" required>Gallons Requested</label>
-                                <input type="number" min='0.5' step="0.5" required value="1"
+                                <input name="gallons" type="number" min='0.5' step="0.5" required value="1"
                                     id="newFuelQuote__gallonRequested">
                                 <p>Gallon(s)</p>
                             </div>
                             <div class="newFuelQuote__requestFormItem">
                                 <label for="newFuelQuote__dateDelivery" required>Date Delivery</label>
-                                <input type="date" id="newFuelQuote__dateDelivery" required>
+                                <input name="delivery_date" type="date" id="newFuelQuote__dateDelivery" required>
                             </div>
                             <div class="newFuelQuote__requestFormItem">
                                 <label for="newFuelQuote__suggestedPrice" required>Suggested Price</label>
                                 <p>$</p>
 
-                                <input type="number" id="newFuelQuote__suggestedPrice" required disabled>
+                                <input name="suggested_price" type="number" id="newFuelQuote__suggestedPrice" required disabled>
                                 <p>Dollar(s)</p>
 
                             </div>
@@ -184,7 +184,7 @@
 
                                 <label for="newFuelQuote__totalAmountDue" required>Total Amount Due</label>
                                 <p>$</p>
-                                <input type="number" id="newFuelQuote__totalAmountDue" required disabled>
+                                <input name="amount_due" type="number" id="newFuelQuote__totalAmountDue" required disabled>
                                 <p>Dollar(s)</p>
 
                             </div>

@@ -226,7 +226,7 @@
                                 Basic Information
                             </span>
                         </div>
-                        <form class="accountSettings__Form">
+                        <form action="/user/settings" method="post" class="accountSettings__Form">
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_image">Photo</label>
                                 <div class="accountSettings__FormGroupUserPhoto">
@@ -242,55 +242,49 @@
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_firstName">First Name</label>
                                 <div>
-                                    <input type="text" id="settingInfo_firstName">
-                                </div>
-                            </div>
-                            <div class="accountSettings__FormGroup">
-                                <label for="settingInfo_lastName">Last Name</label>
-                                <div>
-                                    <input type="text" id="settingInfo_lastName">
+                                    <input name="full_name" type="text" id="settingInfo_firstName">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_companyName">Company Name</label>
                                 <div>
-                                    <input type="text" id="settingInfo_companyName">
+                                    <input name="company_name" type="text" id="settingInfo_companyName">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_email">Email</label>
                                 <div>
-                                    <input type="email" id="settingInfo_email">
+                                    <input name="email" type="email" id="settingInfo_email">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_phoneNumber">Phone Number</label>
                                 <div>
-                                    <input type="text" id="settingInfo_phoneNumber">
+                                    <input name="phone_number" type="text" id="settingInfo_phoneNumber">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_streetNumber">Street Number</label>
                                 <div>
-                                    <input type="text" id="settingInfo_streetNumber">
+                                    <input name="street_number" type="text" id="settingInfo_streetNumber">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_streetName">Street Name</label>
                                 <div>
-                                    <input type="text" id="settingInfo_streetName">
+                                    <input name="street_name" type="text" id="settingInfo_streetName">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_city">City</label>
                                 <div>
-                                    <input type="text" id="settingInfo_city">
+                                    <input name="city" type="text" id="settingInfo_city">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_state">State</label>
                                 <div>
-                                    <select name="settingInfo_state" id="settingInfo_state">
+                                    <select name="state" id="settingInfo_state">
                                         <option value="" selected="selected">Select a State</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
@@ -350,13 +344,13 @@
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_zipcode">Zipcode</label>
                                 <div>
-                                    <input id="settingInfo_zipcode" type="number" min="1" max="5">
+                                    <input name="zip_code" id="settingInfo_zipcode" type="number" min="1" max="5">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">
                                 <label for="settingInfo_country">Country</label>
                                 <div>
-                                    <input type="text" id="settingInfo_country" value="United States">
+                                    <input name="country" type="text" id="settingInfo_country" value="United States">
                                 </div>
                             </div>
                             <div class="accountSettings__FormGroup">

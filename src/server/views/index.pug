@@ -17,13 +17,13 @@ block content
                         button(type="reset" id="cancelForgotPassword") Cancel
             div(class="container" id="container")
                 div(class="formContainer formContainer__signUpContainer")
-                    form(action="#signupUser")
+                    form(action="/sign-up" method="post")
                         h1 Create Account
-                        input(type="email" placeholder="Email" id="signupEmail" autocomplete="off" data-valid='null')
+                        input(type="email" name="email" placeholder="Email" id="signupEmail" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
-                        input(type="password" placeholder="Password" id="signupPassword" autocomplete="off" data-valid='null')
+                        input(type="password" name="password" placeholder="Password" id="signupPassword" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
-                        input(type="password" placeholder="Password Confirm" id="signupPasswordConfirm" autocomplete="off" data-valid='null')
+                        input(type="password" name="confirm_password" placeholder="Password Confirm" id="signupPasswordConfirm" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
                         button(type="submit" class="generalButton" id="signUpBtn") Sign Up
                         div(class="passwordContainer" id="passwordSuggestion")
@@ -47,7 +47,7 @@ block content
                                 i(class="fas fa-times-circle")
                                 p The password has no blank spaces
                 div(class="formContainer formContainer__signInContainer")
-                    form(id="signInForm")
+                    form(action="/login" method="post" id="signInForm")
                         h1 Sign In
                         input(type="email" placeholder="Email" id="email" autocomplete="off" data-valid='null')
                         p(class="errorMessage")

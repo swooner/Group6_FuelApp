@@ -8,9 +8,11 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 //routers declaration
-const viewRouter = require('./routes/viewRoutes');
+const indexRouter = require('./routes');
+const usersRouter = require( './routes/users' );
 
 app.use(express.json()); //middleware to parse all req res to json type
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser());
 
 app.set('view engine', 'pug');
@@ -19,7 +21,8 @@ app.use(express.static(`${__dirname}/public`));
 
 //ROUTES
 
-app.use('/', viewRouter);
+app.use('/', indexRouter );
+app.use( '/user', usersRouter );
 
 
 module.exports = app;
