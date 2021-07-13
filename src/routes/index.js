@@ -2,9 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const viewController = require('../controllers/viewController');
-const userController = require('../controllers/userController');
+const quoteController = require('../controllers/quoteController');
 
-router.get('/', viewController.getIndex);
+router.get('/', viewController.getIndex );
 // GET request for creating User
 // router.get( '/sign-up', viewController.signUp_get );
 
@@ -16,6 +16,12 @@ router.post( '/sign-up', viewController.signUp_post );
 
 // POST request for loggin-in User
 router.post( '/login', viewController.login_post );
+
+// GET request for Quote Request Form
+router.get( '/request-quote', quoteController.quote_request_get );
+
+// POST request for Quote Request Form
+router.post( '/request-quote', quoteController.quote_request_post );
 
 
 module.exports = router;

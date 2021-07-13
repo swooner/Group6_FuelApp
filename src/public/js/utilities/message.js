@@ -1,4 +1,4 @@
-import { _id } from "../utilities/helper.js";
+import { _id } from "./helper.js";
 
 const loginArea = _id("login");
 const messageArea = `

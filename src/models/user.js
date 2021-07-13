@@ -9,11 +9,11 @@ class User {
 
 let nextUserId = 0;
 exports.addUser = ( email, password ) => {
-    const user = new User({
-        id: `${ nextUserId++ }`, 
+    const user = new User(
+        `${ nextUserId++ }`, 
         email,
         password,
-    });
+    );
     return user;
 };
 

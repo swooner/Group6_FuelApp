@@ -25,7 +25,7 @@ exports.user_settings_post = [
         const errors = validationResult( req );
         console.log( 'errors:', errors );
         if ( !errors.isEmpty() ) {
-            res.render( 'settings', { title: 'Settings', user: req.body, errors: errors.array( ) } );
+            res.render( 'settings', { title: 'Settings', quote: req.body, errors: errors.array( ) } );
             return;
         }
         else {
@@ -33,7 +33,7 @@ exports.user_settings_post = [
             const user = User.updateUser( req.body );
             console.log( 'user:', user );
             if ( user ) {
-                res.redirect( 'profile' )
+                res.render( 'profile' )
             }
         }
     }

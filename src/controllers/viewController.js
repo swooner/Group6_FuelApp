@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
-    res.status(200).render(`request_fuel_quote`, {
+    res.status(200).render( `request_fuel_quote`, {
         title: `Super Fuel | Premium Fuel Delivered in a Click`
     });
 }

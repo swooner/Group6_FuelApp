@@ -136,5 +136,9 @@ block content
                                     label(for="settingInfo_country") Country
                                     div
                                         input(type="text" id="settingInfo_country" value="United States")
+                                if errors
+                                    ul
+                                    for error in errors
+                                        li!= error.msg
                                 div(class="accountSettings__FormGroup")
                                     button(class="accountSettings__FormGroupSubmitButton" type="submit" id="updateNewInformation") Save Changes
