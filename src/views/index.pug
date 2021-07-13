@@ -19,7 +19,7 @@ block content
                 div(class="formContainer formContainer__signUpContainer")
                     form(action="/sign-up" method="post")
                         h1 Create Account
-                        input(type="email" name="email" placeholder="Email" id="signupEmail" autocomplete="off" data-valid='null')
+                        input(type="email" name="email" placeholder="Email" id="signupEmail" value=(user===undefined ? '' : user.email) autocomplete="off" data-valid='null')
                         p(class="errorMessage")
                         input(type="password" name="password" placeholder="Password" id="signupPassword" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
