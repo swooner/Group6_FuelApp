@@ -32,12 +32,12 @@ block content
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__suggestedPrice" required) Suggested Price
                                     p $
-                                    input(type="number" name="suggested_price" id="newFuelQuote__suggestedPrice" value=(quote===undefined ? '' : quote.suggested_price) required)
+                                    input(type="number" name="suggested_price" id="newFuelQuote__suggestedPrice" value=(quote===undefined ? '' : quote.suggested_price) required disabled)
                                     p Dollar(s)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__totalAmountDue" required) Total Amount Due
                                     p $
-                                    input(type="number" name="amount_due" id="newFuelQuote__totalAmountDue" value=(quote===undefined ? '' : quote.amount_due) required)
+                                    input(type="number" name="amount_due" id="newFuelQuote__totalAmountDue" value=(quote===undefined ? '' : quote.amount_due) required disabled)
                                     p Dollar(s)
                                 if errors
                                     ul
