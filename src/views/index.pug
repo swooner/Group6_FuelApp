@@ -25,6 +25,10 @@ block content
                         p(class="errorMessage")
                         input(type="password" name="confirm_password" placeholder="Password Confirm" id="signupPasswordConfirm" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
+                        if signUpErrors
+                            ul
+                            for error in signUpErrors
+                                li!= error.msg
                         button(type="submit" class="generalButton" id="signUpBtn") Sign Up
                         div(class="passwordContainer" id="passwordSuggestion")
                             p Password must include:
@@ -49,11 +53,15 @@ block content
                 div(class="formContainer formContainer__signInContainer")
                     form(action="/login" method="post" id="signInForm")
                         h1 Sign In
-                        input(type="email" placeholder="Email" id="email" autocomplete="off" data-valid='null')
+                        input(type="email" name="email" placeholder="Email" id="email" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
-                        input(type="password" placeholder="Password" id="password" autocomplete="off" data-valid='null')
+                        input(type="password" name="password" placeholder="Password" id="password" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
                         a(href="#forgotPassword" id="forgotPasswordLink") Forgot your password?
+                        if loginErrors
+                            ul
+                            for error in loginErrors
+                                li!= error.msg
                         button(type="submit" class="generalButton" id="signInBtn") Sign In 
                 div(class="overlayContainer")
                     div(class="overlay")

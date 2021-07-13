@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
-    res.status(200).render( `request_fuel_quote`, {
+    res.status(200).render( `index`, {
         title: `Super Fuel | Premium Fuel Delivered in a Click`
     });
 }
@@ -43,7 +43,7 @@ exports.signUp_post = [
             const user = User.addUser(req.body.email, req.body.password);
             console.log('user:', user);
             if (user) {
-                res.redirect('profile')
+                res.redirect( '/user/settings' );
             }
         }
     }
@@ -56,9 +56,21 @@ exports.login_get = function (req, res) {
 
 // Handle user log-in form on POST
 exports.login_post = [
-    body('email', 'Email must be valid').trim().isLength({ min: 1 }).isEmail().normalizeEmail().escape(),
-    body('password').trim().isLength({ min: 1 }).matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
+    body('email', 'Email is required').trim().isLength({ min: 1 }).isEmail().normalizeEmail().escape(),
+    body('password', 'Password is required').trim().isLength({ min: 1 }),
     (req, res, next) => {
-        res.redirect('dashboard');
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render( 'index', { title: 'Super Fuel', user: req.body, loginErrors: errors.array() });
+            return;
+        }
+        else {
+            res.redirect( '/dashboard' );
+        }
     }
 ];
+
+// Display user log-in form on GET
+exports.dashboard_get = function (req, res) {
+    res.render( 'dashboard' );
+};

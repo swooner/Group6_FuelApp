@@ -23,5 +23,8 @@ router.get( '/request-quote', quoteController.quote_request_get );
 // POST request for Quote Request Form
 router.post( '/request-quote', quoteController.quote_request_post );
 
+// GET request for Dashboard
+router.get( '/dashboard', viewController.dashboard_get );
+
 
 module.exports = router;

@@ -31,7 +31,7 @@ block content
                         div(class="accountSettings__component")
                             div(class="accountSettings__componentHeader")
                                 span Basic Information
-                            form(class="accountSettings__Form")
+                            form(action="" method="post" class="accountSettings__Form")
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_image") Photo
                                     div(class="accountSettings__FormGroupUserPhoto")
@@ -43,11 +43,11 @@ block content
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_firstName") First Name
                                     div
-                                        input(type="text" id="settingInfo_firstName")
+                                        input(type="text" name="first_name" id="settingInfo_firstName" value=(user===undefined ? '' : user.first_name))
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_lastName") Last Name
                                     div
-                                        input(type="text" id="settingInfo_lastName")
+                                        input(type="text" name="last_name" id="settingInfo_lastName" value=(user===undefined ? '' : user.last_name))
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_companyName") Company Name
                                     div
@@ -61,77 +61,77 @@ block content
                                     div
                                         input(type="text" id="settingInfo_phoneNumber")
                                 div(class="accountSettings__FormGroup")
-                                    label(for="settingInfo_streetNumber") Street Number
+                                    label(for="settingInfo_address") Address
                                     div
-                                        input(type="text" id="settingInfo_streetNumber")
+                                        input(type="text" name="address1" id="settingInfo_address1" value=(user===undefined ? '' : user.address1))
                                 div(class="accountSettings__FormGroup")
-                                    label(for="settingInfo_streetName") Street Name
+                                    label(for="settingInfo_address") Address
                                     div
-                                        input(type="text" id="settingInfo_streetName")
+                                        input(type="text" name="address2" id="settingInfo_address2" value=(user===undefined ? '' : user.address2))
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_city") City
                                     div
-                                        input(type="text" id="settingInfo_city")
+                                        input(type="text" name="city" id="settingInfo_city" value=(user===undefined ? '' : user.city))
                                 div(class="accountSettings__FormGroup" id="accountSettings__FormGroupStates")
-                                    label(for="settingInfo_state") State
+                                    label(for="state") State
                                     div
-                                        select(name="settingInfo_state" id="settingInfo_state")
-                                            option(value="" selected disable) Select a State
-                                            option(value="AL") Alabama
-                                            option(value="AK") Alaska
-                                            option(value="AZ") Arizona
-                                            option(value="AR") Arkansas
-                                            option(value="CA") California
-                                            option(value="CO") Colorado
-                                            option(value="CT") Connecticut
-                                            option(value="DE") Delaware
-                                            option(value="DC") District Of Columbia
-                                            option(value="FL") Florida
-                                            option(value="GA") Georgia
-                                            option(value="HI") Hawaii
-                                            option(value="ID") Idaho
-                                            option(value="IL") Illinois
-                                            option(value="IN") Indiana
-                                            option(value="IA") Iowa
-                                            option(value="KS") Kansas
-                                            option(value="KY") Kentucky
-                                            option(value="LA") Louisiana
-                                            option(value="ME") Maine
-                                            option(value="MD") Maryland
-                                            option(value="MA") Massachusetts
-                                            option(value="MI") Michigan
-                                            option(value="MN") Minnesota
-                                            option(value="MS") Mississippi
-                                            option(value="MO") Missouri
-                                            option(value="MT") Montana
-                                            option(value="NE") Nebraska
-                                            option(value="NV") Nevada
-                                            option(value="NH") New Hampshire
-                                            option(value="NJ") New Jersey
-                                            option(value="NM") New Mexico
-                                            option(value="NY") New York
-                                            option(value="NC") North Carolina
-                                            option(value="ND") North Dakota
-                                            option(value="OH") Ohio
-                                            option(value="OK") Oklahoma
-                                            option(value="OR") Oregon
-                                            option(value="PA") Pennsylvania
-                                            option(value="RI") Rhode Island
-                                            option(value="SC") South Carolina
-                                            option(value="SD") South Dakota
-                                            option(value="TN") Tennessee
-                                            option(value="TX") Texas
-                                            option(value="UT") Utah
-                                            option(value="VT") Vermont
-                                            option(value="VA") Virginia
-                                            option(value="WA") Washington
-                                            option(value="WV") West Virginia
-                                            option(value="WI") Wisconsin
-                                            option(value="WY") Wyoming
+                                        select(name="state" id="settingInfo_state")
+                                            option(value="" selected=(user===undefined ? 'selected' : false) disable) Select a State
+                                            option(value="AL" selected=(user && user.state === 'AL' ? 'selected' : false)) Alabama
+                                            option(value="AK" selected=(user && user.state === 'AK' ? 'selected' : false)) Alaska
+                                            option(value="AZ" selected=(user && user.state === 'AZ' ? 'selected' : false)) Arizona
+                                            option(value="AR" selected=(user && user.state === 'AR' ? 'selected' : false)) Arkansas
+                                            option(value="CA" selected=(user && user.state === 'CA' ? 'selected' : false)) California
+                                            option(value="CO" selected=(user && user.state === 'CO' ? 'selected' : false)) Colorado
+                                            option(value="CT" selected=(user && user.state === 'CT' ? 'selected' : false)) Connecticut
+                                            option(value="DE" selected=(user && user.state === 'DE' ? 'selected' : false)) Delaware
+                                            option(value="DC" selected=(user && user.state === 'DC' ? 'selected' : false)) District Of Columbia
+                                            option(value="FL" selected=(user && user.state === 'FL' ? 'selected' : false)) Florida
+                                            option(value="GA" selected=(user && user.state === 'GA' ? 'selected' : false)) Georgia
+                                            option(value="HI" selected=(user && user.state === 'HI' ? 'selected' : false)) Hawaii
+                                            option(value="ID" selected=(user && user.state === 'ID' ? 'selected' : false)) Idaho
+                                            option(value="IL" selected=(user && user.state === 'IL' ? 'selected' : false)) Illinois
+                                            option(value="IN" selected=(user && user.state === 'IN' ? 'selected' : false)) Indiana
+                                            option(value="IA" selected=(user && user.state === 'IA' ? 'selected' : false)) Iowa
+                                            option(value="KS" selected=(user && user.state === 'KS' ? 'selected' : false)) Kansas
+                                            option(value="KY" selected=(user && user.state === 'KY' ? 'selected' : false)) Kentucky
+                                            option(value="LA" selected=(user && user.state === 'LA' ? 'selected' : false)) Louisiana
+                                            option(value="ME" selected=(user && user.state === 'ME' ? 'selected' : false)) Maine
+                                            option(value="MD" selected=(user && user.state === 'MD' ? 'selected' : false)) Maryland
+                                            option(value="MA" selected=(user && user.state === 'MA' ? 'selected' : false)) Massachusetts
+                                            option(value="MI" selected=(user && user.state === 'MI' ? 'selected' : false)) Michigan
+                                            option(value="MN" selected=(user && user.state === 'MN' ? 'selected' : false)) Minnesota
+                                            option(value="MS" selected=(user && user.state === 'MS' ? 'selected' : false)) Mississippi
+                                            option(value="MO" selected=(user && user.state === 'MO' ? 'selected' : false)) Missouri
+                                            option(value="MT" selected=(user && user.state === 'MT' ? 'selected' : false)) Montana
+                                            option(value="NE" selected=(user && user.state === 'NE' ? 'selected' : false)) Nebraska
+                                            option(value="NV" selected=(user && user.state === 'NV' ? 'selected' : false)) Nevada
+                                            option(value="NH" selected=(user && user.state === 'NH' ? 'selected' : false)) New Hampshire
+                                            option(value="NJ" selected=(user && user.state === 'NJ' ? 'selected' : false)) New Jersey
+                                            option(value="NM" selected=(user && user.state === 'NM' ? 'selected' : false)) New Mexico
+                                            option(value="NY" selected=(user && user.state === 'NY' ? 'selected' : false)) New York
+                                            option(value="NC" selected=(user && user.state === 'NC' ? 'selected' : false)) North Carolina
+                                            option(value="ND" selected=(user && user.state === 'ND' ? 'selected' : false)) North Dakota
+                                            option(value="OH" selected=(user && user.state === 'OH' ? 'selected' : false)) Ohio
+                                            option(value="OK" selected=(user && user.state === 'OK' ? 'selected' : false)) Oklahoma
+                                            option(value="OR" selected=(user && user.state === 'OR' ? 'selected' : false)) Oregon
+                                            option(value="PA" selected=(user && user.state === 'PA' ? 'selected' : false)) Pennsylvania
+                                            option(value="RI" selected=(user && user.state === 'RI' ? 'selected' : false)) Rhode Island
+                                            option(value="SC" selected=(user && user.state === 'SC' ? 'selected' : false)) South Carolina
+                                            option(value="SD" selected=(user && user.state === 'SD' ? 'selected' : false)) South Dakota
+                                            option(value="TN" selected=(user && user.state === 'TN' ? 'selected' : false)) Tennessee
+                                            option(value="TX" selected=(user && user.state === 'TX' ? 'selected' : false)) Texas
+                                            option(value="UT" selected=(user && user.state === 'UT' ? 'selected' : false)) Utah
+                                            option(value="VT" selected=(user && user.state === 'VT' ? 'selected' : false)) Vermont
+                                            option(value="VA" selected=(user && user.state === 'VA' ? 'selected' : false)) Virginia
+                                            option(value="WA" selected=(user && user.state === 'WA' ? 'selected' : false)) Washington
+                                            option(value="WV" selected=(user && user.state === 'WV' ? 'selected' : false)) West Virginia
+                                            option(value="WI" selected=(user && user.state === 'WI' ? 'selected' : false)) Wisconsin
+                                            option(value="WY" selected=(user && user.state === 'WY' ? 'selected' : false)) Wyoming
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_zipcode") Zipcode
                                     div
-                                        input(id="settingInfo_zipcode" type="number" maxlength="5" required)
+                                        input(id="settingInfo_zipcode" name="zip_code" type="number" maxlength="5"  value=(user===undefined ? '' : user.zip_code) required)
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_country") Country
                                     div
