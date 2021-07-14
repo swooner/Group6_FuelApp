@@ -98,8 +98,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: 'Bo Gum', 
+				first_name: 'Bo Gum', 
+				last_name: 'Park', 
 				address1: '123 Test Address',
 				address2: 'Apt 100',
 				city: 'Sugar Land',
@@ -114,7 +114,7 @@ describe( 'POST /user/settings', ( ) => {
 			.post( '/user/settings' )
 			.send({ 
 				first_name: '', 
-				last_name: 'Bo Gum', 
+				last_name: 'Park', 
 				address1: '123 Test Street',
 				address2: '',
 				city: 'Sugar Land',
@@ -128,8 +128,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: '', 
+				first_name: 'Bo Gum', 
+				last_name: '',  
 				address1: '123 Test Street',
 				address2: '',
 				city: 'Sugar Land',
@@ -143,8 +143,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: 'Bo Gum', 
+				first_name: 'Bo Gum', 
+				last_name: 'Park', 
 				address1: '',
 				address2: '',
 				city: 'Sugar Land',
@@ -158,8 +158,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: 'Bo Gum', 
+				first_name: 'Bo Gum', 
+				last_name: 'Park',  
 				address1: '123 Test Street',
 				address2: '',
 				city: 'Sugar Land',
@@ -173,8 +173,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: 'Bo Gum', 
+				first_name: 'Bo Gum', 
+				last_name: 'Park',  
 				address1: '123 Test Street',
 				address2: '',
 				city: '',
@@ -188,8 +188,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: 'Bo Gum', 
+				first_name: 'Bo Gum', 
+				last_name: 'Park',
 				address1: '123 Test Street',
 				address2: '',
 				city: 'Sugar Land',
@@ -203,8 +203,8 @@ describe( 'POST /user/settings', ( ) => {
 		request( app )
 			.post( '/user/settings' )
 			.send({ 
-				first_name: 'Park', 
-				last_name: 'Bo Gum', 
+				first_name: 'Bo Gum', 
+				last_name: 'Park', 
 				address1: '123 Test Street',
 				address2: '',
 				city: 'Sugar Land',
