@@ -2,21 +2,23 @@
 
 Group project for COSC 4353 by Noble Egbulefu, Tony Hoang, and Seun Adeniji.
 
-## Setup
-
-Open terminal. Start the following command:
+## Application
 
 ```bash
-npm run dev-server
+npm run application
 ```
 
-## Organization
+## Testing
 
-CSS files go in the /public/css folder.
+```bash
+npm run test
+```
 
-JS files go in the /public/js folder.
+## Coverage
 
-App is running on localhost:8080.
+```bash
+npm run coverage
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

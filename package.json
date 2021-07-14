@@ -13,7 +13,7 @@
     "test": "./node_modules/.bin/mocha ./test",
     "coverage": "nyc npm run test"
   },
-  "author": "Tony Tuan Hoang",
+  "author": "Group 6",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.0-alpha.3",
