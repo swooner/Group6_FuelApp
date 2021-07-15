@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
-    res.status(200).render( `index`, {
+    res.status(200).render(`index`, {
         title: `Super Fuel | Premium Fuel Delivered in a Click`
     });
 }
@@ -33,7 +33,7 @@ exports.signUp_post = [
             return;
         }
         else {
-            res.redirect( '/user/settings' );
+            res.redirect('/user/settings');
         }
     }
 ];
@@ -45,16 +45,42 @@ exports.login_post = [
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render( 'index', { title: 'Super Fuel', user: req.body, loginErrors: errors.array() });
+            res.status(400).render('index', { title: 'Super Fuel', user: req.body, loginErrors: errors.array() });
             return;
         }
         else {
-            res.redirect( '/dashboard' );
+            res.redirect('/dashboard');
         }
     }
 ];
 
 // Display user log-in form on GET
 exports.dashboard_get = function (req, res) {
-    res.render( 'dashboard' );
+    res.render('dashboard');
+};
+// Display customers management page on GET
+exports.customers_get = function (req, res) {
+    res.render('customers');
+};
+// Display quotes management page on GET
+exports.quotes_get = function (req, res) {
+    res.render('quotes');
+};
+// Display invoices management page on GET
+exports.invoices_get = function (req, res) {
+    res.render('invoices');
+};
+// Display payments management page on GET
+exports.payments_get = function (req, res) {
+    res.render('payments');
+};
+// Display users management page on GET
+exports.users_get = function (req, res) {
+    res.render('users');
+};
+
+// Display fuel quote form on GET
+
+exports.requestFuelQuote_get = function (req, res) {
+    res.render('request_fuel_quote');
 };

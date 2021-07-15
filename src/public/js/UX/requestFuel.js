@@ -9,12 +9,11 @@ const suggestedPrice = _id('newFuelQuote__suggestedPrice');
 const totalAmountDue = _id('newFuelQuote__totalAmountDue');
 
 export const requestFuelHandler = () => {
-    const currentPercentage = parseInt(currentProfilePercentage.closest('div').childNodes[1].dataset.currentPercentage.split('%')[0]);
-
+    const currentPercentage = parseInt(currentProfilePercentage.closest('div').childNodes[0].dataset.currentPercentage.split('%')[0]);
     if (currentPercentage === 100) {
         requestFuelButton.classList.add('profileContent__requestButton--active');
         const activatedRequestButton = document.querySelector('.profileContent__requestButton--active');
-        activatedRequestButton.childNodes[3].setAttribute('href', '/src/pages/request_fuel_quote.html');
+        activatedRequestButton.childNodes[1].setAttribute('href', '/user/request_fuel_quote');
     };
 
 
