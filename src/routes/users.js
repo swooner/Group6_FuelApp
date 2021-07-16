@@ -13,8 +13,6 @@ router.get('/settings', userController.user_settings_get);
 // POST request for updating User settings
 router.post('/settings', userController.user_settings_post);
 
-router.get('/request_fuel_quote', userController.request_fuel_quote_get);
-
 
 
 module.exports = router;

@@ -77,10 +77,10 @@ describe( 'GET /dashboard', ( ) => {
 	});
 });
 
-describe( 'GET /user', ( ) => {
+describe( 'GET /user/profile', ( ) => {
 	it( 'should render user profile page', done => {
 		request( app )
-			.get( '/user' )
+			.get( '/user/profile' )
 			.expect( 200, done );
 	});
 });
@@ -274,3 +274,43 @@ describe( 'POST /request-quote', ( ) => {
 			.expect( 400, done );
 	});
 })
+
+describe( 'GET /customers', ( ) => {
+	it( 'should render customers page', done => {
+		request( app )
+			.get( '/customers' )
+			.expect( 200, done );
+	});
+});
+
+describe( 'GET /quotes', ( ) => {
+	it( 'should render quotes page', done => {
+		request( app )
+			.get( '/quotes' )
+			.expect( 200, done );
+	});
+});
+
+describe( 'GET /invoices', ( ) => {
+	it( 'should render invoices page', done => {
+		request( app )
+			.get( '/invoices' )
+			.expect( 200, done );
+	});
+});
+
+describe( 'GET /payments', ( ) => {
+	it( 'should render payments page', done => {
+		request( app )
+			.get( '/payments' )
+			.expect( 200, done );
+	});
+});
+
+describe( 'GET /users', ( ) => {
+	it( 'should render users page', done => {
+		request( app )
+			.get( '/users' )
+			.expect( 200, done );
+	});
+});

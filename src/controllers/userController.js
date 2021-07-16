@@ -32,7 +32,3 @@ exports.user_settings_post = [
         }
     }
 ];
-
-exports.request_fuel_quote_get = (req, res, next) => {
-    res.render('request_fuel_quote');
-}
