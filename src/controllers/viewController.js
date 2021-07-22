@@ -1,6 +1,7 @@
 
 const User = require('../models/userModel');
 const { body, validationResult } = require('express-validator');
+const { insertUser } = require( '../models/userModel' );
 
 // Display home page
 exports.getIndex = (req, res, next) => {
@@ -33,7 +34,19 @@ exports.signUp_post = [
             return;
         }
         else {
-            res.redirect('/user/settings');
+            const callback = ( user ) => {
+                console.log( 'user:', user );
+                if ( user ) {
+                    res.redirect('/user/settings');
+                }
+                return user;
+            };
+            insertUser({ 
+                email: req.body.email,
+                password: req.body.password,
+                callback
+            })
+            callback();
         }
     }
 ];
