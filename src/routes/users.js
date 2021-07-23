@@ -1,4 +1,5 @@
 const express = require('express');
+const getToken = require( '../models/userModel' );
 const router = express.Router();
 
 const userController = require('../controllers/userController');

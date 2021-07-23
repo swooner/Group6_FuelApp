@@ -1,11 +1,10 @@
 
-const User = require('../models/userModel');
 const { body, validationResult } = require('express-validator');
-const { insertUser, getAllUser } = require('../models/userModel');
+const { insertUser, loginUser, verifyToken } = require('../models/userModel');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
-    res.status(200).render(`index`, {
+    res.status(200).render('index', {
         title: `Super Fuel | Premium Fuel Delivered in a Click`
     });
 }
@@ -62,7 +61,19 @@ exports.login_post = [
             return;
         }
         else {
-            res.redirect('/dashboard');
+            const callback = ({ token, error }) => {
+                if (token) {
+                    res.status(200).json({ token });
+                }
+                else if (error == 'NO_USER') {
+                    res.status(400).render('index', { title: 'Super Fuel', user: req.body, loginErrors: [{ msg: 'There was no match for your credentials.' }] });
+                }
+            };
+            loginUser({
+                email: req.body.email,
+                password: req.body.password,
+                callback
+            });
         }
     }
 ];

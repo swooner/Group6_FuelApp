@@ -9,7 +9,7 @@ const body = document.querySelector('body');
 export const loginUser = async function (credential) {
   try {
     loader(body);
-    const res = await fetch(`${CONFIG.API_URL}`, {
+    const res = await fetch(`/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -23,7 +23,8 @@ export const loginUser = async function (credential) {
     if (data) {
       removeLoader();
       displayMessage(`Logging you in...`, "success", 3);
-      location.assign('/dashboard.html');
+      localStorage.setItem('token', data.token);
+      location.assign('/dashboard');
     }
   } catch (err) {
     removeLoader();
@@ -32,19 +33,19 @@ export const loginUser = async function (credential) {
 };
 validatedInput();
 if (signInBtn) {
-  // if (signInBtn.disabled === false) {
-  //   signInBtn.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     const email = _id("email");
-  //     const password = _id("password");
-  //     const credential = {
-  //       email: email.value,
-  //       password: password.value,
-  //     };
-  //     loginUser(credential);
-  //     email.value = "";
-  //     password.value = "";
-  //   });
-  // }
+  if (signInBtn.disabled === false) {
+    signInBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const email = _id("email");
+      const password = _id("password");
+      const credential = {
+        email: email.value,
+        password: password.value,
+      };
+      loginUser(credential);
+      email.value = "";
+      password.value = "";
+    });
+  }
 
 }
