@@ -1,6 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
+const { getToken } = require( '../models/userModel' );
 const viewController = require('../controllers/viewController');
 
 router.get('/', viewController.getIndex);
