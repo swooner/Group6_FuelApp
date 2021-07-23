@@ -18,7 +18,7 @@ block content
                                         p Quotes
                         div(class="contentHeader__control")
                             button(class="contentHeader__controlButton")
-                                a(href="/add_quote")
+                                a(href="/request-quote")
                                     i(class="fas fa-plus")
                             button(class="contentHeader__controlButton")
                                 a
@@ -41,48 +41,51 @@ block content
                                     th Quote Number
                                     th Customer
                                     th Quote Date
-                                    th Expiry Date
+                                    //- th Expiry Date
                                     th Amount
                                     th Status
                                     th Action
                             tbody(class="quoteTable__body")
-                                tr
-                                    td
-                                        a(href="/view_quote" data-invoice-number="QUO-17ER281") QUO-17ER281
-                                    td
-                                        a(href="/profile/1" data-customer-id="1")
-                                            img(class="customerImage" src="img/user_profile.jpg" alt="customers_img")
-                                            span Full Name
-                                    td June 28, 2021
-                                    td July 05, 2021
-                                    td $1,000,000.00
-                                    td 
-                                        span(class="quoteStatus quoteStatus--expired") Expired
-                                    td
-                                        a(href="#" class="dropdownMenuAction__button")
-                                            i(class="fas fa-ellipsis-h")
-                                        div(class="dropdownMenuAction")
-                                            a(href="/edit_quote" data-quote-id="QUO-17ER281")
-                                                i(class="fas fa-file-signature")
-                                                span Edit
-                                            a(href="/edit_quote" data-quote-id="QUO-17ER281")
-                                                i(class="far fa-trash-alt")
-                                                span Delete
-                                            a(href="/view_quote" data-quote-id="QUO-17ER281")
-                                                i(class="fas fa-eye")
-                                                span View
-                                            a(href="#" data-quote-id="QUO-17ER281")
-                                                i(class="fas fa-file-signature")
-                                                span Produce Invoice
-                                            a(href="#" data-quote-id="QUO-17ER281")
-                                                i(class="fas fa-envelope-open-text")
-                                                span Mark as Sent
-                                            a(href="#" data-quote-id="QUO-17ER281")
-                                                i(class="far fa-paper-plane")
-                                                span Send Estimate
-                                            a(href="#" data-quote-id="QUO-17ER281")
-                                                i(class="far fa-check-circle")
-                                                span Mark as Accepted
-                                            a(href="/edit_quote/" data-quote-id="QUO-17ER281")
-                                                i(class="far fa-times-circle")
-                                                span Mark as Rejected
+                                if quotes
+                                    ul
+                                    for quote in quotes
+                                        tr
+                                            td
+                                                a(href="/view_quote" data-invoice-number=quote.ID) #{ quote.ID }
+                                            td
+                                                a(href="/profile/1" data-customer-id="1")
+                                                    img(class="customerImage" src="img/user_profile.jpg" alt="customers_img")
+                                                    span #{ user.first_name } #{ user.last_name }
+                                            td #{ quote.delivery_date }
+                                            //- td #{ quote.valid_until }
+                                            td $#{ quote.amount_due }
+                                            td 
+                                                span(class="quoteStatus quoteStatus--expired") #{ quote.quote_status }
+                                            td
+                                                a(href="#" class="dropdownMenuAction__button")
+                                                    i(class="fas fa-ellipsis-h")
+                                                div(class="dropdownMenuAction")
+                                                    a(href="/edit_quote" data-quote-id="QUO-17ER281")
+                                                        i(class="fas fa-file-signature")
+                                                        span Edit
+                                                    a(href="/edit_quote" data-quote-id="QUO-17ER281")
+                                                        i(class="far fa-trash-alt")
+                                                        span Delete
+                                                    a(href="/view_quote" data-quote-id="QUO-17ER281")
+                                                        i(class="fas fa-eye")
+                                                        span View
+                                                    a(href="#" data-quote-id="QUO-17ER281")
+                                                        i(class="fas fa-file-signature")
+                                                        span Produce Invoice
+                                                    a(href="#" data-quote-id="QUO-17ER281")
+                                                        i(class="fas fa-envelope-open-text")
+                                                        span Mark as Sent
+                                                    a(href="#" data-quote-id="QUO-17ER281")
+                                                        i(class="far fa-paper-plane")
+                                                        span Send Estimate
+                                                    a(href="#" data-quote-id="QUO-17ER281")
+                                                        i(class="far fa-check-circle")
+                                                        span Mark as Accepted
+                                                    a(href="/edit_quote/" data-quote-id="QUO-17ER281")
+                                                        i(class="far fa-times-circle")
+                                                        span Mark as Rejected

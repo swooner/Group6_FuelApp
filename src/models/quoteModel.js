@@ -1,21 +1,49 @@
-class Quote {
-    constructor(id, gallons, date_delivery, suggested_price, amount_due) {
-        this.id = id;
-        this.gallons = gallons;
-        this.date_delivery = date_delivery;
-        this.suggested_price = suggested_price;
-        this.amount_due = amount_due;
-    }
+
+const connection = require( '../dbconfig' );
+const { verifyToken } = require('../models/userModel');
+
+exports.insertQuote = async ({
+    gallons,
+    delivery_date,
+    suggested_price,
+    amount_due,
+    token,
+    callback 
+}) => {
+    const decoded = verifyToken( token );
+    const values = { ClientInformation_ID: decoded.id, gallons, delivery_date, suggested_price, amount_due };
+    connection.query( 'INSERT INTO Fuel_Quote SET ?', values, ( error, results, fields ) => {
+        if ( error ) {
+            return connection.rollback( () => {
+                throw error;
+            });
+        }
+        console.log( 'Successfully inserted new quote!' );
+        callback({
+            user: decoded
+        });
+    });
 };
 
-let nextId = 0;
-exports.addQuote = ({ gallons, date_delivery, suggested_price, amount_due }) => {
-    const quote = new Quote(
-        `${nextId++}`,
-        gallons,
-        date_delivery,
-        suggested_price,
-        amount_due
-    );
-    return quote;
+exports.getQuotes = async ({
+    user,
+    callback 
+}) => {
+    const sql = `
+        SELECT *
+        FROM Fuel_Quote
+        WHERE
+            ClientInformation_ID = ?
+    `;
+    connection.query( sql, user.ID, ( error, results, fields ) => {
+        if ( error ) {
+            return connection.rollback( () => {
+                throw error;
+            });
+        }
+        // console.log( 'results:', results );
+        callback({
+            quotes: results
+        });
+    });
 };

@@ -92,136 +92,136 @@ describe( 'GET /user/profile', ( ) => {
 	});
 });
 
-describe( 'GET /user/settings', ( ) => {
-	it( 'should render user settings page', done => {
-		request( app )
-			.get( '/user/settings' )
-			.expect( 200, done );
-	});
-});
+// describe( 'GET /user/settings', ( ) => {
+// 	it( 'should render user settings page', done => {
+// 		request( app )
+// 			.get( '/user/settings' )
+// 			.expect( 200, done );
+// 	});
+// });
 
-describe( 'POST /user/settings', ( ) => {
-	it( 'should accept valid settings', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: 'Park', 
-				address1: '123 Test Address',
-				address2: 'Apt 100',
-				city: 'Sugar Land',
-				state: 'TX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 302, done );
-	});
-	it( 'should reject invalid first name', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: '', 
-				last_name: 'Park', 
-				address1: '123 Test Street',
-				address2: '',
-				city: 'Sugar Land',
-				state: 'TX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 400, done );
-	});
-	it( 'should reject invalid last name', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: '',  
-				address1: '123 Test Street',
-				address2: '',
-				city: 'Sugar Land',
-				state: 'TX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 400, done );
-	});
-	it( 'should reject invalid address', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: 'Park', 
-				address1: '',
-				address2: '',
-				city: 'Sugar Land',
-				state: 'TX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 400, done );
-	});
-	it( 'should accept empty address2', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: 'Park',  
-				address1: '123 Test Street',
-				address2: '',
-				city: 'Sugar Land',
-				state: 'TX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 302, done );
-	});
-	it( 'should reject invalid city', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: 'Park',  
-				address1: '123 Test Street',
-				address2: '',
-				city: '',
-				state: 'TX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 400, done );
-	});
-	it( 'should reject invalid state', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: 'Park',
-				address1: '123 Test Street',
-				address2: '',
-				city: 'Sugar Land',
-				state: 'TXXX',
-				zip_code: '77479'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 400, done );
-	});
-	it( 'should reject invalid zip code', done => {
-		request( app )
-			.post( '/user/settings' )
-			.send({ 
-				first_name: 'Bo Gum', 
-				last_name: 'Park', 
-				address1: '123 Test Street',
-				address2: '',
-				city: 'Sugar Land',
-				state: 'TXXX',
-				zip_code: '777'
-			})
-			.set( 'Accept', 'application/json' )
-			.expect( 400, done );
-	});
-});
+// describe( 'POST /user/settings', ( ) => {
+// 	it( 'should accept valid settings', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: 'Park', 
+// 				address1: '123 Test Address',
+// 				address2: 'Apt 100',
+// 				city: 'Sugar Land',
+// 				state: 'TX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 302, done );
+// 	});
+// 	it( 'should reject invalid first name', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: '', 
+// 				last_name: 'Park', 
+// 				address1: '123 Test Street',
+// 				address2: '',
+// 				city: 'Sugar Land',
+// 				state: 'TX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 400, done );
+// 	});
+// 	it( 'should reject invalid last name', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: '',  
+// 				address1: '123 Test Street',
+// 				address2: '',
+// 				city: 'Sugar Land',
+// 				state: 'TX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 400, done );
+// 	});
+// 	it( 'should reject invalid address', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: 'Park', 
+// 				address1: '',
+// 				address2: '',
+// 				city: 'Sugar Land',
+// 				state: 'TX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 400, done );
+// 	});
+// 	it( 'should accept empty address2', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: 'Park',  
+// 				address1: '123 Test Street',
+// 				address2: '',
+// 				city: 'Sugar Land',
+// 				state: 'TX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 302, done );
+// 	});
+// 	it( 'should reject invalid city', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: 'Park',  
+// 				address1: '123 Test Street',
+// 				address2: '',
+// 				city: '',
+// 				state: 'TX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 400, done );
+// 	});
+// 	it( 'should reject invalid state', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: 'Park',
+// 				address1: '123 Test Street',
+// 				address2: '',
+// 				city: 'Sugar Land',
+// 				state: 'TXXX',
+// 				zip_code: '77479'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 400, done );
+// 	});
+// 	it( 'should reject invalid zip code', done => {
+// 		request( app )
+// 			.post( '/user/settings' )
+// 			.send({ 
+// 				first_name: 'Bo Gum', 
+// 				last_name: 'Park', 
+// 				address1: '123 Test Street',
+// 				address2: '',
+// 				city: 'Sugar Land',
+// 				state: 'TXXX',
+// 				zip_code: '777'
+// 			})
+// 			.set( 'Accept', 'application/json' )
+// 			.expect( 400, done );
+// 	});
+// });
 
 describe( 'GET /request-quote', ( ) => {
 	it( 'should render quote request page', done => {

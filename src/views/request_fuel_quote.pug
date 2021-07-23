@@ -15,11 +15,12 @@ block content
                                 span
                                     p Customer and Delivery Information:
                                 span
-                                    p Company Name LLC
-                                    p Customer FullName
-                                    p 12345 SomeStreet Drive
-                                    p Sugarland, TX 77777
-                                    p United States
+                                    //- p Company Name LLC
+                                    p #{ user.first_name } #{ user.last_name }
+                                    p #{ user.address1 }
+                                    p #{ user.address2 }
+                                    p #{ user.city }, #{ user.state } #{ user.zip_code }
+                                    //- p United States
                             h2(class="newFuelQuote__bodyHeader") Request Details
                             form(action="/request-quote" method="post" class="newFuelQuote__requestForm")
                                 div(class="newFuelQuote__requestFormItem")
@@ -28,16 +29,16 @@ block content
                                     p Gallon(s)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__dateDelivery" required) Date Delivery
-                                    input(type="date" name="date_delivery" id="newFuelQuote__dateDelivery" value=(quote===undefined ? '' : quote.date_delivery) required)
+                                    input(type="date" name="delivery_date" id="newFuelQuote__dateDelivery" value=(quote===undefined ? '' : quote.date_delivery) required)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__suggestedPrice" required) Suggested Price
                                     p $
-                                    input(type="number" name="suggested_price" id="newFuelQuote__suggestedPrice" value=(quote===undefined ? '' : quote.suggested_price) required disabled)
+                                    input(type="number" name="suggested_price" id="newFuelQuote__suggestedPrice" value=(quote===undefined ? '400.00' : quote.suggested_price) required disabled)
                                     p Dollar(s)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__totalAmountDue" required) Total Amount Due
                                     p $
-                                    input(type="number" name="amount_due" id="newFuelQuote__totalAmountDue" value=(quote===undefined ? '' : quote.amount_due) required disabled)
+                                    input(type="number" name="amount_due" id="newFuelQuote__totalAmountDue" value=(quote===undefined ? '650.50' : quote.amount_due) required disabled)
                                     p Dollar(s)
                                 if errors
                                     ul

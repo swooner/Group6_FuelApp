@@ -63,7 +63,7 @@ exports.getToken = ( req, res, next ) => {
 	}
 };
 
-const verifyToken = ( token ) => {
+exports.verifyToken = ( token ) => {
 	if ( !token ) {
 		return;
 	}
@@ -76,7 +76,7 @@ exports.loginUser = async ({ email, password, callback }) => {
 			throw err; 
 		}
 		const sql = `
-			SELECT UserCredentials.*, ClientInformation.email
+			SELECT UserCredentials.password, ClientInformation.*
 			FROM ClientInformation
 			INNER JOIN UserCredentials 
 				ON UserCredentials.ID = ClientInformation.ID
@@ -127,7 +127,9 @@ exports.loginUser = async ({ email, password, callback }) => {
 					});
 				}
 				else {
-					res.sendStatus( 400 )
+					callback({
+						error: 'NO_MATCH'
+					})
 				}
 			}
 		});

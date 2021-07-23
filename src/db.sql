@@ -10,17 +10,8 @@ CREATE TABLE UserCredentials (
     PRIMARY KEY ( ID )
 ) ENGINE = INNODB;
 
-CREATE TABLE quote (quoteId int, 
-subject varchar(255), 
-validUntil datetime,
-customerId int,
-PRIMARY KEY(quoteId)
-) ENGINE = INNODB;
-
-
- 
  CREATE TABLE ClientInformation (
-    ID INT NOT NULL,
+    ID INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     email VARCHAR(255) UNIQUE, 
@@ -30,8 +21,12 @@ PRIMARY KEY(quoteId)
     city VARCHAR(255),
     state CHAR(2),
     zip_code VARCHAR(10),
+    photo_url VARCHAR(512),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(ID),
+    profile_percentage FLOAT8,
     FOREIGN KEY (ID) REFERENCES UserCredentials(ID) ON DELETE CASCADE
-);
+) ENGINE = INNODB;
 
 CREATE TABLE UserLogin (
 	ID INT NOT NULL,
@@ -39,4 +34,18 @@ CREATE TABLE UserLogin (
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(ID),
 	FOREIGN KEY (ID) REFERENCES UserCredentials(ID) ON DELETE CASCADE
-);
+) ENGINE = INNODB;
+
+CREATE TABLE Fuel_Quote (
+    ID BIGINT NOT NULL AUTO_INCREMENT, 
+    ClientInformation_ID INT,
+    gallons FLOAT,
+    delivery_date DATETIME,
+    suggested_price FLOAT,
+    amount_due FLOAT,
+    valid_until DATETIME,
+    quote_status VARCHAR(128),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(ID),
+    FOREIGN KEY (ClientInformation_ID) REFERENCES ClientInformation(ID)
+) ENGINE = INNODB;

@@ -16,7 +16,7 @@ router.post('/login', viewController.login_post);
 router.get('/request-quote', viewController.quote_request_get);
 
 // POST request for Quote Request Form
-router.post('/request-quote', viewController.quote_request_post);
+router.post('/request-quote', getToken, viewController.quote_request_post);
 
 // GET request for Dashboard
 router.get('/dashboard', viewController.dashboard_get);

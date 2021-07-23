@@ -1,6 +1,7 @@
 
 const { body, validationResult } = require('express-validator');
 const { insertUser, loginUser, getAllUser } = require('../models/userModel');
+const { insertQuote, getQuotes } = require('../models/quoteModel');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
@@ -65,7 +66,7 @@ exports.login_post = [
                     req.session.user = user;
                     res.status( 200 ).json({ token });
                 }
-                else if (error == 'NO_USER') {
+                else if (error) {
                     res.status(400).render('index', { title: 'Super Fuel', user: req.body, loginErrors: [{ msg: 'There was no match for your credentials.' }] });
                 }
             };
@@ -80,25 +81,43 @@ exports.login_post = [
 
 // Handle quote request form on GET
 exports.quote_request_get = function (req, res) {
-    res.render('request_fuel_quote');
+    const sessionUser = req.session.user;
+    if ( sessionUser ) {
+        res.render('request_fuel_quote', { title: 'Request a quote', user: sessionUser } );
+    }
+    else {
+        res.redirect( '/' );
+    }
 };
 
 // Handle quote request form on POST
 exports.quote_request_post = [
     body('gallons').trim().isNumeric().withMessage('Gallon amount must be valid')
         .isFloat({ min: 0.5 }).withMessage('Gallon amount must be valid').escape(),
-    body('date_delivery').isISO8601().toDate().withMessage('Delivery date must be valid')
+    body('delivery_date').isISO8601().toDate().withMessage('Delivery date must be valid')
         .isAfter().withMessage('Delivery date must be in future').escape(),
     body('suggested_price', 'Suggested price must be valid').isNumeric().escape(),
     body('amount_due', 'Amount due must be valid').isNumeric().escape(),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).render('request_fuel_quote', { title: 'Request Fuel', quote: req.body, errors: errors.array() });
+            res.status(400).render( 'request_fuel_quote', { title: 'Request Fuel', quote: req.body, errors: errors.array() });
             return;
         }
         else {
-            res.redirect('/user');
+            const callback = ({ user }) => {
+                if ( user ) {
+                    res.redirect( '/quotes' );
+                }
+            };
+            insertQuote({
+                gallons: req.body.gallons,
+                delivery_date: req.body.delivery_date,
+                suggested_price: req.body.suggested_price,
+                amount_due: req.body.amount_due,
+                token: req.token,
+                callback
+            });
         }
     }
 ];
@@ -117,7 +136,18 @@ exports.customers_get = function (req, res) {
 
 // Display quotes management page on GET
 exports.quotes_get = function (req, res) {
-    res.render('quotes');
+    const sessionUser = req.session.user;
+    if ( sessionUser ) {
+        const callback = ({ quotes }) => {
+            if ( quotes ) {
+                res.status( 200 ).render( 'quotes', { title: 'Quote', quotes, user: sessionUser } );
+            }
+        };
+        getQuotes({ user: sessionUser, callback });
+    }
+    else {
+        res.redirect( '/' );
+    }
 };
 
 // Display invoices management page on GET

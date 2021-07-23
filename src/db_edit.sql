@@ -9,18 +9,6 @@ CREATE TABLE UserCredentials (
     PRIMARY KEY ( ID )
 ) ENGINE = INNODB;
 
-CREATE TABLE Fuel_Quote (
-    ID BIGINT NOT NULL AUTO_INCREMENT, 
-    ClientInformation_ID INT,
-    quantity FLOAT,
-    total FLOAT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    valid_until DATETIME,
-    quote_status VARCHAR(128),
-    PRIMARY KEY(ID),
-    FOREIGN KEY (ClientInformation_ID) REFERENCES ClientInformation(ID)
-) ENGINE = INNODB;
-
  CREATE TABLE ClientInformation (
     ID INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(100),
@@ -39,15 +27,17 @@ CREATE TABLE Fuel_Quote (
     FOREIGN KEY (ID) REFERENCES UserCredentials(ID) ON DELETE CASCADE
 );
 CREATE TABLE Fuel_Quote (
-ID BIGINT NOT NULL AUTO_INCREMENT, 
-ClientInformation_ID INT,
-quantity FLOAT,
-total FLOAT,
-created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-valid_until DATETIME,
-quote_status VARCHAR(128),
-PRIMARY KEY(ID),
-FOREIGN KEY (ClientInformation_ID) REFERENCES ClientInformation(ID)
+    ID BIGINT NOT NULL AUTO_INCREMENT, 
+    ClientInformation_ID INT,
+    gallons FLOAT,
+    delivery_date DATETIME,
+    suggested_price FLOAT,
+    amount_due FLOAT,
+    valid_until DATETIME,
+    quote_status VARCHAR(128),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(ID),
+    FOREIGN KEY (ClientInformation_ID) REFERENCES ClientInformation(ID)
 ) ENGINE = INNODB;
 
 
