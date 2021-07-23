@@ -51,24 +51,24 @@ const createLoginToken = async ({ ID, email }) => {
 };
 
 exports.getToken = ( req, res, next ) => {
-	console.log( 'req.headers:', req.headers );
-    const bearerHeader = req.headers[ 'Authorization' ];
-	console.log( 'bearerHeader:', bearerHeader );
+    const bearerHeader = req.headers[ 'authorization' ];
     if ( typeof bearerHeader !== 'undefined' ) {
         const bearer = bearerHeader.split( ' ' );
         const bearerToken = bearer[ 1 ];
         req.token = bearerToken;
+		next();
     }
-	next();
+	else {
+		res.sendStatus( 403 );
+	}
 };
 
-exports.verifyToken = ( token ) => {
-	console.log( 'token:', token );
+const verifyToken = ( token ) => {
 	if ( !token ) {
 		return;
 	}
 	return jwt.verify( token, 'a-secret-key' );
-}
+};
 
 exports.loginUser = async ({ email, password, callback }) => {
 	connection.beginTransaction( ( err ) => {
@@ -82,7 +82,6 @@ exports.loginUser = async ({ email, password, callback }) => {
 				ON UserCredentials.ID = ClientInformation.ID
 			WHERE email = '${ email }';
 		`;
-		console.log( 'sql:', sql );
 		connection.query( sql, async ( error, results, fields ) => {
 			if ( error ) {
 				return connection.rollback( () => {
@@ -90,7 +89,7 @@ exports.loginUser = async ({ email, password, callback }) => {
 				});
 			}
 			const user = results[ 0 ];
-			console.log( 'user:', user );
+			// console.log( 'user:', user );
 			if ( !user ) {
 				console.log( 'No user with that email exists.' );
 				callback({ error: 'NO_USER' });
@@ -98,10 +97,10 @@ exports.loginUser = async ({ email, password, callback }) => {
 			else {
 				const userId = user.ID;
 				const match = await bcrypt.compare( password, user.password );
-				console.log( 'match:', match );
+				// console.log( 'match:', match );
 				if ( match ) {
 					const token = await createLoginToken( user );
-					console.log( 'token:', token );
+					// console.log( 'token:', token );
 					const sql2 = `
 						INSERT INTO UserLogin( ID, token ) 
 						VALUES ( '${ userId }', '${ token }' ) 
@@ -119,8 +118,9 @@ exports.loginUser = async ({ email, password, callback }) => {
 									throw err;
 								});
 							}
-							console.log( `Successfully inserted new user login for user with id #${ userId }.`  );
+							// console.log( `Successfully inserted new user login for user with id #${ userId }.`  );
 							callback({
+								user,
 								token
 							});
 						});
@@ -134,6 +134,59 @@ exports.loginUser = async ({ email, password, callback }) => {
 	});
 };
 
-exports.updateUser = ({ full_name, address1, address2, city, state, zip_code }) => {
+exports.getUser = ({ user, callback }) => {
+	const sql = `
+		SELECT ID, first_name, last_name, address1, address2, city, state, zip_code, email
+		FROM ClientInformation 
+		WHERE ID = ?
+	`;
+	connection.query( sql, user.ID, ( error, results, fields ) => {
+		if ( error ) {
+			return connection.rollback( ( ) => {
+				throw error;
+			});
+		}
+		const result = results[ 0 ];
+		if ( result ) {
+			callback({ user: result });
+		}
+		else {
+			callback({ error: 'NO_USER' });
+		}
+	});
+};
 
+exports.updateUser = ({ first_name, last_name, address1, address2, city, state, zip_code, token, callback }) => {
+	const decoded = verifyToken( token );
+	const sql = `
+		UPDATE ClientInformation
+		SET 
+			first_name = ?,
+			last_name = ?,
+			address1 = ?,
+			address2 = ?,
+			city = ?, 
+			state = ?,
+			zip_code = ?
+		WHERE ID = ?
+	`;
+	connection.query( sql, [ first_name, last_name, address1, address2, city, state, zip_code, decoded.id ], ( error, results, fields ) => {
+		if ( error ) {
+			return connection.rollback( ( ) => {
+				throw error;
+			});
+		}
+		console.log( 'Successfully updated user settings' );
+		const user = {
+			...decoded,
+			first_name,
+			last_name,
+			address1,
+			address2,
+			city,
+			state,
+			zip_code
+		}
+		callback( user );
+	});
 };

@@ -55,7 +55,7 @@ block content
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_email") Email
                                     div
-                                        input(type="email" id="settingInfo_email")
+                                        input(type="email" id="settingInfo_email" value=(user===undefined ? '' : user.email))
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_phoneNumber") Phone Number
                                     div

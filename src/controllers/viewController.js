@@ -38,14 +38,12 @@ exports.signUp_post = [
                 if ( user ) {
                     res.redirect('/user/settings');
                 }
-                return user;
             };
             insertUser({ 
                 email: req.body.email,
                 password: req.body.password,
                 callback
-            })
-            callback();
+            });
         }
     }
 ];
@@ -61,8 +59,10 @@ exports.login_post = [
             return;
         }
         else {
-            const callback = ({ token, error }) => {
+            const callback = ({ user, token, error }) => {
                 if ( token ) {
+                    // console.log( 'user:', user );
+                    req.session.user = user;
                     res.status( 200 ).json({ token });
                 }
                 else if ( error == 'NO_USER' ) {

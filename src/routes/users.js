@@ -1,6 +1,6 @@
 
 const express = require('express');
-const getToken = require( '../models/userModel' );
+const { getToken } = require( '../models/userModel' );
 const router = express.Router();
 
 const userController = require('../controllers/userController');
@@ -12,7 +12,7 @@ router.get('/profile', userController.user_profile_get);
 router.get('/settings', userController.user_settings_get);
 
 // POST request for updating User settings
-router.post('/settings', userController.user_settings_post);
+router.post('/settings', getToken, userController.user_settings_post);
 
 
 

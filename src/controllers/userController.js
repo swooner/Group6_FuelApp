@@ -1,6 +1,7 @@
 
 const User = require('../models/userModel');
 const { body, validationResult } = require('express-validator');
+const { getUser, updateUser } = require( '../models/userModel' );
 
 // Display user profile
 exports.user_profile_get = function (req, res) {
@@ -8,8 +9,22 @@ exports.user_profile_get = function (req, res) {
 };
 
 // Display user profile form on GET
-exports.user_settings_get = function (req, res) {
-    res.render('settings');
+exports.user_settings_get = (req, res) => {
+    const sessionUser = req.session.user;
+    // console.log( 'sessionUser:', sessionUser );
+    const callback = ({ user, error }) => {
+        if ( error ) {
+            res.sendStatus( 400 );
+        }
+        // console.log( 'user:', user );
+        res.status( 200 ).render( 'settings', { title: 'Settings', user } );
+    };
+    if ( sessionUser ) {
+        getUser({ user: sessionUser, callback });
+    }
+    else {
+        res.sendStatus( 403 );
+    }
 };
 
 // Handle user profile form on POST
@@ -28,7 +43,23 @@ exports.user_settings_post = [
             return;
         }
         else {
-            res.redirect('/user');
+            const callback = ( user ) => {
+                // console.log( 'user:', user );
+                if ( user ) {
+                    res.status( 200 ).render( 'settings', { title: 'Settings', user } );
+                }
+            };
+            updateUser({ 
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                address1: req.body.address1,
+                address2: req.body.address2,
+                city: req.body.city,
+                state: req.body.state,
+                zip_code: req.body.zip_code,
+                token: req.token,
+                callback
+            });
         }
     }
 ];

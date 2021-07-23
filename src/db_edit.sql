@@ -26,12 +26,13 @@ CREATE TABLE Fuel_Quote (
     last_name VARCHAR(100),
     email VARCHAR(255) UNIQUE, 
     phone_number VARCHAR(30),
-    street_number VARCHAR(255),
-    street_name VARCHAR(255),
+    address1 VARCHAR(255),
+    address2 VARCHAR(255),
     city VARCHAR(255),
     state CHAR(2),
     zip_code VARCHAR(10),
     photo_url VARCHAR(512),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(ID),
     FOREIGN KEY (ID) REFERENCES UserCredentials(ID) ON DELETE CASCADE
 );

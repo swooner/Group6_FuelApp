@@ -15,6 +15,11 @@ const errorRouter = require('./routes/users');
 app.use(express.json()); //middleware to parse all req res to json type
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser());
+app.use(session({
+    secret: 'session-secret',
+    saveUninitialized: false,
+    resave: false,
+}))
 
 app.set('view engine', 'pug');
 app.set('views', path.join(`${__dirname}/views`));
