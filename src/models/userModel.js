@@ -45,3 +45,18 @@ exports.insertUser = async ({ email, password, callback }) => {
 exports.updateUser = ({ full_name, address1, address2, city, state, zip_code }) => {
 
 };
+
+exports.getAllUser = async () => {
+	let sql_query = `SELECT * FROM ClientInformation;`;
+	connection.query(sql_query, (err, result, fields) => {
+		if (err) throw err;
+	});
+
+};
+exports.getOneUser = async (userID) => {
+	let sql_query = `SELECT * FROM ClientInformation WHERE ID=${userID};`;
+	connection.query(sql_query, (err, result, fields) => {
+		if (err) throw err;
+	});
+
+};

@@ -23,7 +23,7 @@ export const loginUser = async function (credential) {
     if (data) {
       removeLoader();
       displayMessage(`Logging you in...`, "success", 3);
-      location.assign('/src/pages/dashboard.html');
+      location.assign('/dashboard.html');
     }
   } catch (err) {
     removeLoader();

@@ -1,7 +1,7 @@
 
 const User = require('../models/userModel');
 const { body, validationResult } = require('express-validator');
-const { insertUser } = require( '../models/userModel' );
+const { insertUser, getAllUser } = require('../models/userModel');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
@@ -34,14 +34,14 @@ exports.signUp_post = [
             return;
         }
         else {
-            const callback = ( user ) => {
-                console.log( 'user:', user );
-                if ( user ) {
+            const callback = (user) => {
+                console.log('user:', user);
+                if (user) {
                     res.redirect('/user/settings');
                 }
                 return user;
             };
-            insertUser({ 
+            insertUser({
                 email: req.body.email,
                 password: req.body.password,
                 callback
@@ -94,6 +94,8 @@ exports.quote_request_post = [
 
 // Display user log-in form on GET
 exports.dashboard_get = function (req, res) {
+    getAllUser();
+
     res.render('dashboard');
 };
 
