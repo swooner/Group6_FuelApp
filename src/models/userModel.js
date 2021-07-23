@@ -178,7 +178,8 @@ exports.updateUser = ({ first_name, last_name, address1, address2, city, state, 
 		}
 		console.log( 'Successfully updated user settings' );
 		const user = {
-			...decoded,
+			ID: decoded.id,
+			email: decoded.email,
 			first_name,
 			last_name,
 			address1,

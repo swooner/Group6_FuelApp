@@ -58,6 +58,7 @@ exports.user_settings_post = [
             const callback = ( user ) => {
                 // console.log( 'user:', user );
                 if ( user ) {
+                    req.session.user = user;
                     res.status( 200 ).render( 'settings', { title: 'Settings', user } );
                 }
             };

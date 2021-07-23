@@ -1,6 +1,6 @@
 
 const { body, validationResult } = require('express-validator');
-const { insertUser, loginUser, verifyToken } = require('../models/userModel');
+const { insertUser, loginUser, getAllUser } = require('../models/userModel');
 
 // Display home page
 exports.getIndex = (req, res, next) => {
