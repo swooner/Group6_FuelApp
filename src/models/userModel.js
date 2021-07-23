@@ -190,3 +190,18 @@ exports.updateUser = ({ first_name, last_name, address1, address2, city, state, 
 		callback( user );
 	});
 };
+
+exports.getAllUser = async () => {
+	let sql_query = `SELECT * FROM ClientInformation;`;
+	connection.query(sql_query, (err, result, fields) => {
+		if (err) throw err;
+	});
+
+};
+exports.getOneUser = async (userID) => {
+	let sql_query = `SELECT * FROM ClientInformation WHERE ID=${userID};`;
+	connection.query(sql_query, (err, result, fields) => {
+		if (err) throw err;
+	});
+
+};

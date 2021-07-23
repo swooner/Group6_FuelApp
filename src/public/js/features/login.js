@@ -23,7 +23,7 @@ export const loginUser = async function (credential) {
     if (data) {
       removeLoader();
       displayMessage(`Logging you in...`, "success", 3);
-      localStorage.setItem( 'token', data.token );
+      localStorage.setItem('token', data.token);
       location.assign('/dashboard');
     }
   } catch (err) {

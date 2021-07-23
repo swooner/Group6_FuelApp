@@ -27,6 +27,18 @@ exports.user_settings_get = (req, res) => {
     }
 };
 
+// Display user change password form on GET
+exports.user_change_password_get = function (req, res) {
+    res.render('change_password');
+};
+// Display user change password form on GET
+exports.user_request_fuel_quote_get = function (req, res) {
+    console.log(User.getAllUser());
+    res.render('request_fuel_quote');
+};
+
+
+
 // Handle user profile form on POST
 exports.user_settings_post = [
     body('first_name', 'First name must be valid').trim().isLength({ min: 1, max: 50 }).escape(),

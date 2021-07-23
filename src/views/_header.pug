@@ -11,36 +11,14 @@ header(class="pageHeader")
             span
             span
     ul(class="navbarUserMenu")
-        li
-            div(class="dropdownToggle navbarUserMenu__notification")
-                i(class="far fa-bell")
-                span(class="navbarUserMenu__notificationBadge") 0
-            div(class="dropdownMenu notifications")
-                div(class="notifications__header")
-                    span Notifications
-                    a(id="clearNotificationBtn") Clear All
-                ul(class="notifications__list")
-                    //- li(class="notifications__list--message")
-                    //-     a(href="/activities")
-                    //-         div(class="notificationContent")
-                    //-             span(class="notificationContent__avatar")
-                    //-                 img(src="/src/img/user_profile.jpg" alt="avatar")
-                    //-             div(class="notificationContent__body")
-                    //-                 p(class="notificationContent__details")
-                    //-                     span  Barbara Moore 
-                    //-                     span paid the invoice
-                    //-                     span #ABC123456789
-                    //-                 p(class="notificationContent__time")
-                    //-                     span 10 minutes ago
-                div(class="notifications__footer")
-                    a(href="/activities") View all Notifications
+        include _notification
         li
             div(class="dropdownToggle navbarUserMenu__userProfile")
                 img(class="userProfileImage" src="/img/user_profile.jpg" alt="user_profile_image")
                 span User Name
                 i(class="fas fa-chevron-down dropdownToggle__button")
             div(class="dropdownMenu userControl")
-                a(href="/profile" class="dropdownMenu__links" title="profile" data-page="profile")
+                a(href="/user/profile" class="dropdownMenu__links" title="profile" data-page="profile")
                     i(class="fas fa-id-badge")
                     span Profile
                 a(href="/user/settings" class="dropdownMenu__links" title="settings" data-page="settings")

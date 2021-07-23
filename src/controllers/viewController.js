@@ -1,10 +1,10 @@
 
 const { body, validationResult } = require('express-validator');
-const { insertUser, loginUser, verifyToken } = require( '../models/userModel' );
+const { insertUser, loginUser, verifyToken } = require('../models/userModel');
 
 // Display home page
-exports.getIndex = ( req, res, next ) => {
-    res.status( 200 ).render( 'index', {
+exports.getIndex = (req, res, next) => {
+    res.status(200).render('index', {
         title: `Super Fuel | Premium Fuel Delivered in a Click`
     });
 }
@@ -33,13 +33,13 @@ exports.signUp_post = [
             return;
         }
         else {
-            const callback = ( user ) => {
-                console.log( 'user:', user );
-                if ( user ) {
+            const callback = (user) => {
+                console.log('user:', user);
+                if (user) {
                     res.redirect('/user/settings');
                 }
             };
-            insertUser({ 
+            insertUser({
                 email: req.body.email,
                 password: req.body.password,
                 callback
@@ -65,11 +65,11 @@ exports.login_post = [
                     req.session.user = user;
                     res.status( 200 ).json({ token });
                 }
-                else if ( error == 'NO_USER' ) {
+                else if (error == 'NO_USER') {
                     res.status(400).render('index', { title: 'Super Fuel', user: req.body, loginErrors: [{ msg: 'There was no match for your credentials.' }] });
                 }
             };
-            loginUser({ 
+            loginUser({
                 email: req.body.email,
                 password: req.body.password,
                 callback
@@ -105,6 +105,8 @@ exports.quote_request_post = [
 
 // Display user log-in form on GET
 exports.dashboard_get = function (req, res) {
+    getAllUser();
+
     res.render('dashboard');
 };
 
