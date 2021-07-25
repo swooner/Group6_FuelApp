@@ -1,18 +1,36 @@
 const { body, validationResult } = require('express-validator');
 const User = require('../models/userModel');
+const Quote = require('../models/quoteModel');
+
 exports.getIndex = (req, res, next) => {
 
     res.status(200).render('index', {
         title: `SuperFuel | Premium Quality Fuel Delivered Within a Click`
     });
 }
-exports.getDashboard = (req, res, next) => {
+exports.getDashboard = async (req, res, next) => {
+    const users = await User.findAllUser();
+    const quotes = await Quote.findAllQuotes();
+    const totalQuote = quotes.length;
+    const totalCustomer = users.length;
+    let totalPayment = 0;
+    quotes.forEach(record => {
+        totalPayment += record.amount_due;
+    });
 
+    const statistic = {
+        totalQuote,
+        totalCustomer,
+        totalPayment
+    }
+    res.locals.statistic = statistic;
     res.status(200).render('dashboard', {
         title: `SuperFuel | Dashboard`
     });
 }
 exports.getCustomers = (req, res, next) => {
+
+
     res.status(200).render('customers', {
         title: `SuperFuel | Customers Management`
     });

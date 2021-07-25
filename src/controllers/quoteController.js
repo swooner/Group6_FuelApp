@@ -29,7 +29,6 @@ exports.requestQuote = async (req, res, next) => {
         valid_until,
         ClientInformation_ID: parseInt(id),
     }
-    console.log(quote);
     const isQuote = await Quote.submitNewQuote(quote);
     if (isQuote.affectedRows === 1) {
         return res.status(202).json({

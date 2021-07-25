@@ -10,10 +10,12 @@ exports.getSettings = (req, res, next) => {
 exports.getProfile = async (req, res, next) => {
 
     const history = await User.findQuoteHistory(res.locals.user.ID);
-    console.log(history);
+    if (history.length !== 0) {
+        res.locals.history = history;
+    };
 
     res.status(200).render('profile', {
-        title: 'SuperFule | User Profile',
+        title: 'SuperFuel | User Profile',
     });
 }
 exports.updateUserInformation = async (req, res, next) => {

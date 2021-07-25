@@ -1,5 +1,20 @@
 const db = require("../dbconfig");
 const bcrypt = require('bcryptjs');
+
+exports.findAllUser = async () => {
+    const sqlQuery = `SELECT * FROM ClientInformation`;
+    return new Promise((resolve, reject) => {
+        db.query(sqlQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            };
+            return resolve(result);
+        });
+    });
+}
+
+
+
 exports.findUser = (email) => {
     const sqlQuery = `SELECT * FROM ClientInformation JOIN UserCredential ON ClientInformation.ID = UserCredential.ID JOIN role ON role.ID = ClientInformation.role_ID WHERE email ='${email}' ;`;
     return new Promise((resolve, reject) => {

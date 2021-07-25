@@ -1,6 +1,17 @@
 const db = require("../dbconfig");
 const User = require('../models/userModel');
 
+exports.findAllQuotes = () => {
+    const sqlQuery = `SELECT * FROM Fuel_Quote`;
+    return new Promise((resolve, reject) => {
+        db.query(sqlQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            };
+            return resolve(result);
+        });
+    });
+}
 
 const getFactor = async (id, gallons) => {
     const user = await User.findUserById(id);

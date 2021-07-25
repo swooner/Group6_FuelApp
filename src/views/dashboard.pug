@@ -17,7 +17,8 @@ block content
                                         div(class="card__bodyHeaderCount--title")
                                             p Customers
                                         div(class="card__bodyHeaderCount--amount")
-                                            p 0
+                                            if statistic
+                                            p= statistic.totalCustomer
                                 div(class="card__bodyContent")
                                     div(title="0%" class="progressBar progressBar--1" style="width: 0%")
                                 div(class="card__bodyFooter")
@@ -53,7 +54,8 @@ block content
                                         div(class="card__bodyHeaderCount--title")
                                             p Payments
                                         div(class="card__bodyHeaderCount--amount")
-                                            p 0
+                                            if statistic
+                                            p=`$${new Intl.NumberFormat('en-US',{currency:'USD'}).format(statistic.totalPayment)}`
                                 div(class="card__bodyContent")
                                     div(title="0%" class="progressBar progressBar--3" style="width: 0%")
                                 div(class="card__bodyFooter")
@@ -71,7 +73,8 @@ block content
                                         div(class="card__bodyHeaderCount--title")
                                             p Quotes
                                         div(class="card__bodyHeaderCount--amount")
-                                            p 0
+                                            if statistic
+                                            p=statistic.totalQuote
                                 div(class="card__bodyContent")
                                     div(title="0%" class="progressBar progressBar--4" style="width: 0%")
                                 div(class="card__bodyFooter")
@@ -95,7 +98,8 @@ block content
                                         span(class="cardChart__contentSummaryItemTitle")
                                             p Total Customers
                                         span(class="cardChart__contentSummaryItemAmount")
-                                            p 0
+                                            if statistic
+                                            p= statistic.totalCustomer
                                     div(class="cardChart__contentSummaryItem")
                                         span(class="cardChart__contentSummaryItemTitle")
                                             p New Customers
