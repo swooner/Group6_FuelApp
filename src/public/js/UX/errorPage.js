@@ -1,3 +1,15 @@
+import { _id } from '../utilities/helper.js';
+
+const errorPageGoBack = _id('errorPageGoBack');
+
+if (errorPageGoBack) {
+    errorPageGoBack.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.history.back();
+    });
+};
+
+
 export const pageTilt = function () {
     const background = document.querySelector('.errorBackground');
     const errorCode = document.querySelector('.spaceErrorCode');

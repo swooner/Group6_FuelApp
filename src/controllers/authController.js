@@ -46,7 +46,6 @@ exports.signUp = [
     }),
     async (req, res, next) => {
         const errors = validationResult(req);
-        console.log(req.body);
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 ok: false,
@@ -64,7 +63,7 @@ exports.signUp = [
             } else {
                 return res.status(400).json({
                     ok: false,
-                    status: 'failed',
+                    status: 'error',
                     errors: errors.array(),
                     message: 'Error while trying to create your account! Please try again.'
                 })
@@ -95,8 +94,6 @@ exports.signIn = catchAsync(async (req, res, next) => {
     } else {
         const isMatch = await bcrypt.compare(password, user[0].password);
         if (isMatch) {
-            console.log(user[0]);
-
             res.locals.user = user[0];
             data = {
                 role: user[0].role_name,
@@ -138,7 +135,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     if (!token) {
         res.status(401).render(`error`, {
             title: 'SuperFuel | Unauthorized Access',
-            status: 'failed',
+            status: 'error',
             statusCode: 401,
             message: 'Please sign-in to continue.',
         });
@@ -149,7 +146,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     if (currentUser[0] === '' || currentUser[0] === null || currentUser[0] === undefined) {
         res.status(401).render(`error`, {
             title: 'User does not exist',
-            status: 'failed',
+            status: 'error',
             statusCode: 401,
             message: 'This user no longer exist!',
         });
@@ -158,5 +155,18 @@ exports.protect = catchAsync(async (req, res, next) => {
     // GRANT ACCESS TO PROTECTED ROUTE
     req.user = currentUser;
     res.locals.user = currentUser[0];
+    next();
+});
+
+exports.restricted = catchAsync(async (req, res, next) => {
+    //check if current user has administrator privilege or customer
+    if (res.locals.user.role_name === 'customer') {
+        return res.render('error', {
+            title: 'Restricted Routes',
+            statusCode: 401,
+            message: 'You do not have permission to access this route!',
+
+        });
+    }
     next();
 });

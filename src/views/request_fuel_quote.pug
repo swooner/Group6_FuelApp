@@ -15,28 +15,26 @@ block content
                                 span
                                     p Customer and Delivery Information:
                                 span
-                                    p Company Name LLC
-                                    p Customer FullName
-                                    p 12345 SomeStreet Drive
-                                    p Sugarland, TX 77777
-                                    p United States
+                                    p=user.company
+                                    p=`${user.first_name} ${user.last_name}`
+                                    p=`${user.street_number} ${user.street_name}`
+                                    p=`${user.city}, ${user.state} ${user.zip_code}`
+                                    p=user.country
                             h2(class="newFuelQuote__bodyHeader") Request Details
-                            form(action="/request-quote" method="post" class="newFuelQuote__requestForm")
+                            form(action=`/request-quote/${user.ID}` method="post" class="newFuelQuote__requestForm")
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__gallonRequested" required) Gallons Requested
-                                    input(type="number" name="gallons" min='0.5' step="0.5" required value=(quote===undefined ? '1' : quote.gallons) id="newFuelQuote__gallonRequested")
+                                    input(type="number" name="gallons" min='0.5' step="0.5" data-validated="null"  value=(quote===undefined ? '1' : quote.gallons) id="newFuelQuote__gallonRequested" required)
                                     p Gallon(s)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__dateDelivery" required) Date Delivery
-                                    input(type="date" name="date_delivery" id="newFuelQuote__dateDelivery" value=(quote===undefined ? '' : quote.date_delivery) required)
+                                    input(type="date" name="date_delivery" id="newFuelQuote__dateDelivery"  data-validated="null" value=(quote===undefined ? '' : quote.date_delivery) required)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__suggestedPrice" required) Suggested Price
-                                    p $
                                     input(type="number" name="suggested_price" id="newFuelQuote__suggestedPrice" value=(quote===undefined ? '' : quote.suggested_price) required disabled)
                                     p Dollar(s)
                                 div(class="newFuelQuote__requestFormItem")
                                     label(for="newFuelQuote__totalAmountDue" required) Total Amount Due
-                                    p $
                                     input(type="number" name="amount_due" id="newFuelQuote__totalAmountDue" value=(quote===undefined ? '' : quote.amount_due) required disabled)
                                     p Dollar(s)
                                 if errors
@@ -45,4 +43,5 @@ block content
                                         li!= error.msg
                                 div(class="newFuelQuote__requestFormItem")
                                     div(class="accountSettings__FormGroup newFuelQuote__requestFormItem__button")
-                                        button(class="accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton " type="submit" id="sendRequestNewQuoteButton") Submit Request
+                                        button(class="accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton button--disabled" type="button" id="sendGetQuoteButton") Get Quote
+                                        button(class=" accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton button--disabled" type="submit" id="sendRequestNewQuoteButton") Submit Request

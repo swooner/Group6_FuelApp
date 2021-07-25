@@ -28,6 +28,9 @@ export const loginUser = async function (credential) {
         location.assign('/dashboard');
       } else if (user.role_name === "customer" && user.profile_percentage < 1) {
         location.assign('/user/settings');
+      } else {
+        location.assign('/user/profile');
+
       }
     } else {
       displayMessage(`${data.message}`, `${data.status}`, 3);

@@ -70,5 +70,12 @@ exports.updateUserInformation = async (id, userInfo) => {
         profile_percentage = ${userInfo.profile_percentage}
     WHERE
         ID = ${id};`;
-
+    return new Promise((resolve, reject) => {
+        db.query(sqlQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            };
+            return resolve(result);
+        });
+    });
 }

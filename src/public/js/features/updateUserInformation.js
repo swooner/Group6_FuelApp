@@ -1,13 +1,13 @@
 import { _id } from '../utilities/helper.js';
-import { loader } from '../utilities/loader.js';
-
+import { loader, removeLoader } from '../utilities/loader.js';
+import { displayMessage } from '../utilities/message.js';
 const updateNewInformationButton = _id('updateNewInformation');
 const accountSettingsForm = _id('accountSettings__Form');
 const body = document.querySelector('body');
 
 export const updateUserInfoHandler = async () => {
     const url = accountSettingsForm.getAttribute('action');
-    const userInfo = {
+    const userInfo = JSON.stringify({
         first_name: _id('settingInfo_firstName').value,
         last_name: _id('settingInfo_lastName').value,
         company: _id('settingInfo_companyName').value,
@@ -19,19 +19,28 @@ export const updateUserInfoHandler = async () => {
         state: _id('settingInfo_state').value,
         zip_code: _id('settingInfo_zipcode').value,
         country: _id('settingInfo_country').value
-    }
+    });
 
     try {
-        // loader(body);
+        loader(body);
         const res = await fetch(`${url}`, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
             },
-            body: JSON.stringify(userInfo),
+            body: userInfo,
         });
+        const data = await res.json();
+        if (data.ok) {
+            removeLoader();
+            displayMessage(`${data.message}`, `${data.status}`, 3);
+            setTimeout(() => {
+                location.reload(true);
+
+            }, 3000);
+        }
     } catch (error) {
         console.log(error);
     }

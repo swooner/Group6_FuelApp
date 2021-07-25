@@ -1,4 +1,3 @@
-
 const { body, validationResult } = require('express-validator');
 const User = require('../models/userModel');
 exports.getIndex = (req, res, next) => {

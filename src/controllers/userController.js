@@ -12,20 +12,35 @@ exports.getProfile = (req, res, next) => {
         title: 'SuperFule | User Profile',
     });
 }
-exports.updateUserInformation = (req, res, next) => {
-    console.log(req.params.id);
-    const {
-        first_name,
-        last_name,
-        company,
-        email,
-        phone_number,
-        street_number,
-        street_name,
-        city,
-        state,
-        zip_code,
-        country } = req.body;
+exports.updateUserInformation = async (req, res, next) => {
+    const userInfo = { ...req.body };
+    let total_completed = 0;
+    for (const key in userInfo) {
+        if (userInfo[key] !== null && userInfo[key] !== undefined && userInfo[key] !== '') {
+            total_completed++;
+        }
+    }
+    let profile_percentage = parseFloat((total_completed / 11)).toFixed(2);
+    userInfo.profile_percentage = profile_percentage;
+    const result = await User.updateUserInformation(req.params.id, userInfo);
+    if (result.affectedRows === 1) {
+        return res.status(202).json({
+            ok: true,
+            status: 'success',
+            message: 'Successfully update user information',
+        });
+    } else {
+        res.status(400).json({
+            ok: false,
+            status: 'error',
+            message: 'Error occured while trying to update user information! Please try again.',
+        });
+    }
+    next();
+};
 
-
+exports.getRequestFuelQuote = (req, res, next) => {
+    res.render(`request_fuel_quote`, {
+        title: `SuperFuel | Request Fuel Quote Form`,
+    });
 }
