@@ -7,7 +7,11 @@ exports.getSettings = (req, res, next) => {
         title: 'SuperFule | User Information',
     });
 }
-exports.getProfile = (req, res, next) => {
+exports.getProfile = async (req, res, next) => {
+
+    const history = await User.findQuoteHistory(res.locals.user.ID);
+    console.log(history);
+
     res.status(200).render('profile', {
         title: 'SuperFule | User Profile',
     });
