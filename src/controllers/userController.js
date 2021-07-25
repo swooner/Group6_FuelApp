@@ -1,46 +1,31 @@
-
+const catchAsync = require('./../utils/catchAsync');
+const multer = require('multer');
 const User = require('../models/userModel');
-const { body, validationResult } = require('express-validator');
 
-// Display user profile
-exports.user_profile_get = function (req, res) {
-    res.render('profile');
-};
+exports.getSettings = (req, res, next) => {
+    res.status(200).render('settings', {
+        title: 'SuperFule | User Information',
+    });
+}
+exports.getProfile = (req, res, next) => {
+    res.status(200).render('profile', {
+        title: 'SuperFule | User Profile',
+    });
+}
+exports.updateUserInformation = (req, res, next) => {
+    console.log(req.params.id);
+    const {
+        first_name,
+        last_name,
+        company,
+        email,
+        phone_number,
+        street_number,
+        street_name,
+        city,
+        state,
+        zip_code,
+        country } = req.body;
 
-// Display user profile form on GET
-exports.user_settings_get = function (req, res) {
-    res.render('settings');
-};
 
-// Display user change password form on GET
-exports.user_change_password_get = function (req, res) {
-    res.render('change_password');
-};
-// Display user change password form on GET
-exports.user_request_fuel_quote_get = function (req, res) {
-    console.log(User.getAllUser());
-    res.render('request_fuel_quote');
-};
-
-
-
-// Handle user profile form on POST
-exports.user_settings_post = [
-    body('first_name', 'First name must be valid').trim().isLength({ min: 1, max: 50 }).escape(),
-    body('last_name', 'Last name must be valid').trim().isLength({ min: 1, max: 50 }).escape(),
-    body('address1', 'Address must be valid').trim().isLength({ min: 1, max: 100 }).escape(),
-    body('address2', 'Address must be valid').trim().optional({ checkFalsy: true }).trim().isLength({ max: 100 }).escape(),
-    body('city', 'City must be valid').trim().isLength({ min: 1, max: 100 }).escape(),
-    body('state', 'State must be valid').trim().isLength({ min: 1, max: 2 }).escape(),
-    body('zip_code', 'Zip code must be valid').trim().isLength({ min: 5, max: 9 }).isPostalCode('US').isNumeric().escape(),
-    (req, res, next) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            res.status(400).render('settings', { title: 'Settings', user: req.body, errors: errors.array() });
-            return;
-        }
-        else {
-            res.redirect('/user');
-        }
-    }
-];
+}

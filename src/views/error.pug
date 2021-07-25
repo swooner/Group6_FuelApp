@@ -10,9 +10,11 @@ block content
         div(class="spacePlanetJupiter")
             img(src="img/jupiter.png" alt="planets")
         div(class="spaceErrorCode")
-            h1(class="spaceErrorCode__text") 404
-            p Oops!
-            p THE PAGE NOT FOUND
+            h1(class="spaceErrorCode__text") #{statusCode}!
+            p Opss!
+            p #{message}
             div
                 button
-                    a(href="/") Go Back
+                    a(href="/" id="errorPageGoBack") Go Back
+
+    

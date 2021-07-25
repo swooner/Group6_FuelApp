@@ -2,30 +2,32 @@
 
 const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv');
-const app = express();
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
 
 //routers declaration
-const indexRouter = require('./routes');
-const usersRouter = require('./routes/users');
-const errorRouter = require('./routes/users');
+const viewRouter = require('./routes/viewRoutes');
+const userRouter = require('./routes/userRoutes');
+const quoteRouter = require('./routes/quoteRoutes');
+const errorRouter = require('./routes/errorRoutes');
 
-app.use(express.json()); //middleware to parse all req res to json type
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser());
+const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(`${__dirname}/views`));
 app.use(express.static(`${__dirname}/public`));
 
+app.use(express.json()); //middleware to parse all req res to json type
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser());
+
+
+
+
 //ROUTES
 
-app.use('/', indexRouter);
-app.use('/user', usersRouter);
-app.all('*', (req, res, next) => {
-    res.render('error');
-});
+app.use('/', viewRouter);
+app.use('/user', userRouter);
+app.use('/quote', quoteRouter);
+app.all('*', errorRouter);
 
 module.exports = app;

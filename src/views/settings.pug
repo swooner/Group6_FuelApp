@@ -31,13 +31,13 @@ block content
                         div(class="accountSettings__component")
                             div(class="accountSettings__componentHeader")
                                 span Basic Information
-                            form(action="" method="post" class="accountSettings__Form")
+                            form(action=`/user/settings/${user.ID}` class="accountSettings__Form" id="accountSettings__Form")
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_image") Photo
                                     div(class="accountSettings__FormGroupUserPhoto")
-                                        label(for="edit_profile_image")
-                                            img(src="img/user_profile.jpg" alt="user_photo" class="settingInfo__userphoto")
-                                            input(type="file" id="edit_profile_image")
+                                        label(for="settingInfo_image")
+                                            img(src=`${user.photo_url}` alt="user_photo" class="settingInfo__userphoto")
+                                            input(type="file" id="settingInfo_image" value=`${user.photo_url}`)
                                             span
                                                 i(class="fas fa-pencil-alt")
                                 div(class="accountSettings__FormGroup")
@@ -51,23 +51,23 @@ block content
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_companyName") Company Name
                                     div
-                                        input(type="text" id="settingInfo_companyName")
+                                        input(type="text" id="settingInfo_companyName" value=(user===undefined ? '' : user.company))
                                 div(class="accountSettings__FormGroup")
-                                    label(for="settingInfo_email") Email
+                                    label(for="settingInfo_email" value=(user===undefined? '': user.email)) Email
                                     div
-                                        input(type="email" id="settingInfo_email")
+                                        input(type="email" id="settingInfo_email" value=(user===undefined ? '' : user.email))
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_phoneNumber") Phone Number
                                     div
-                                        input(type="text" id="settingInfo_phoneNumber")
+                                        input(type="text" id="settingInfo_phoneNumber" value=(user===undefined ? '' : user.phone_number))
                                 div(class="accountSettings__FormGroup")
-                                    label(for="settingInfo_address") Address
+                                    label(for="settingInfo_streetNumber") Street Number
                                     div
-                                        input(type="text" name="address1" id="settingInfo_address1" value=(user===undefined ? '' : user.address1))
+                                        input(type="text" name="streetNumber" id="settingInfo_streetNumber" value=(user===undefined ? '' : user.street_number))
                                 div(class="accountSettings__FormGroup")
-                                    label(for="settingInfo_address") Address
+                                    label(for="settingInfo_streetName") Street Name
                                     div
-                                        input(type="text" name="address2" id="settingInfo_address2" value=(user===undefined ? '' : user.address2))
+                                        input(type="text" name="streetName" id="settingInfo_streetName" value=(user===undefined ? '' : user.street_name))
                                 div(class="accountSettings__FormGroup")
                                     label(for="settingInfo_city") City
                                     div

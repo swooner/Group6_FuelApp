@@ -1,5 +1,5 @@
 import { _id } from '../utilities/helper.js';
-
+const localStorage = window.localStorage;
 const currentProfilePercentage = document.querySelector('.profileContent__progressBar--percentage');
 const requestFuelButton = document.querySelector('.profileContent__requestButton');
 //// New Fuel Quote

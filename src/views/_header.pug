@@ -14,8 +14,9 @@ header(class="pageHeader")
         include _notification
         li
             div(class="dropdownToggle navbarUserMenu__userProfile")
-                img(class="userProfileImage" src="/img/user_profile.jpg" alt="user_profile_image")
-                span User Name
+                if user
+                    img(class="userProfileImage" src=`${user.photo_url}` alt="user_profile_image")
+                    span=`${user.first_name} ${user.last_name}`
                 i(class="fas fa-chevron-down dropdownToggle__button")
             div(class="dropdownMenu userControl")
                 a(href="/user/profile" class="dropdownMenu__links" title="profile" data-page="profile")
@@ -24,7 +25,7 @@ header(class="pageHeader")
                 a(href="/user/settings" class="dropdownMenu__links" title="settings" data-page="settings")
                     i(class="fas fa-cog")
                     span Settings
-                a(class="dropdownMenu__links" href="/signout")
+                a(class="dropdownMenu__links" id="logoutButton")
                     i(class="fas fa-sign-out-alt")
                     span Sign out
 

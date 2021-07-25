@@ -1,15 +1,15 @@
 import { displayMessage } from "../utilities/message.js";
 import { validatedInput } from "./validation.js";
 import { loader, removeLoader } from "../utilities/loader.js";
-import * as CONFIG from "../config.js";
 import { _id } from "../utilities/helper.js";
 
 const signInBtn = _id("signInBtn");
 const body = document.querySelector('body');
+
 export const loginUser = async function (credential) {
   try {
     loader(body);
-    const res = await fetch(`/login`, {
+    const res = await fetch(`/user/sign-in`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -18,17 +18,25 @@ export const loginUser = async function (credential) {
       },
       body: JSON.stringify(credential),
     });
-    if (!res.ok) throw new Error(`${res.statusText} (${res.status})`);
     const data = await res.json();
-    if (data) {
-      removeLoader();
-      displayMessage(`Logging you in...`, "success", 3);
-      localStorage.setItem('token', data.token);
-      location.assign('/dashboard');
+    removeLoader();
+    if (data.ok) {
+      displayMessage(`${data.message}`, `${data.status}`, 3);
+      const user = data.data.user;
+      // console.log(user);
+      if (user.role_name === "administrator") {
+        location.assign('/dashboard');
+      } else if (user.role_name === "customer" && user.profile_percentage < 1) {
+        location.assign('/user/settings');
+      }
+    } else {
+      displayMessage(`${data.message}`, `${data.status}`, 3);
+
     }
+
   } catch (err) {
     removeLoader();
-    displayMessage(`${err}`, "error", 3);
+    displayMessage(`${err}`, `error`, 3);
   }
 };
 validatedInput();

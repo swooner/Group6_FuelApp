@@ -119,46 +119,46 @@ block content
                                         th
                                             span Action
                                 tbody(class="table__contentBody table__contentInvoiceBody")
-                                    tr
-                                        td
-                                            a(href="/view_invoice/INV-123ABCZ456" data-inv-number="INV-123ABCZ456") INV-123ABCZ456
-                                        td
-                                            div(class="table__contentCustomerDetail")
-                                                div
-                                                    img(class="customerImage" src="/img/user_profile.jpg" alt="customer_img")
-                                                div(class="table__contentCustomerDetailInfo")
-                                                    span
-                                                        a(href="/profile" data-customer-id="1") Full Name
-                                                    span +1 (713) 367 2499
-                                        td
-                                            span June 28, 2021
-                                        td
-                                            span $1,000,000.00
-                                        td
-                                            span July 15, 2021
-                                        td
-                                            span(class="quoteStatus quoteStatus--accepted") Paid
-                                        td
-                                            June 30, 2021
-                                        td
-                                            a(href="#" class="dropdownMenuAction__button")
-                                                i(class="fas fa-ellipsis-h")
-                                            div(class="dropdownMenuAction")
-                                                a(href="/src/pages/edit_invoice.html" data-invoice-id="INV-123ABCZ456")
-                                                    i(class="fas fa-file-signature")
-                                                    span Edit
-                                                a(href="/src/pages/view_invoice.html" data-invoice-id="INV-123ABCZ456")
-                                                    i(class="fas fa-eye")
-                                                    span View
-                                                a(href="/src/pages/edit_invoices.html" data-invoice-id="INV-123ABCZ456")
-                                                    i(class="far fa-trash-alt")
-                                                    span Delete
-                                                a(href="#" data-invoice-id="INV-123ABCZ456")
-                                                    i(class="fas fa-envelope-open-text")
-                                                    span Mark as Sent
-                                                a(href="#" data-invoice-id="INV-123ABCZ456")
-                                                    i(class="far fa-paper-plane")
-                                                    span Send Invoice
+                                    //- tr
+                                    //-     td
+                                    //-         a(href="/view_invoice/INV-123ABCZ456" data-inv-number="INV-123ABCZ456") INV-123ABCZ456
+                                    //-     td
+                                    //-         div(class="table__contentCustomerDetail")
+                                    //-             div
+                                    //-                 img(class="customerImage" src="/img/user_profile.jpg" alt="customer_img")
+                                    //-             div(class="table__contentCustomerDetailInfo")
+                                    //-                 span
+                                    //-                     a(href="/profile" data-customer-id="1") Full Name
+                                    //-                 span +1 (713) 367 2499
+                                    //-     td
+                                    //-         span June 28, 2021
+                                    //-     td
+                                    //-         span $1,000,000.00
+                                    //-     td
+                                    //-         span July 15, 2021
+                                    //-     td
+                                    //-         span(class="quoteStatus quoteStatus--accepted") Paid
+                                    //-     td
+                                    //-         June 30, 2021
+                                    //-     td
+                                    //-         a(href="#" class="dropdownMenuAction__button")
+                                    //-             i(class="fas fa-ellipsis-h")
+                                    //-         div(class="dropdownMenuAction")
+                                    //-             a(href="/src/pages/edit_invoice.html" data-invoice-id="INV-123ABCZ456")
+                                    //-                 i(class="fas fa-file-signature")
+                                    //-                 span Edit
+                                    //-             a(href="/src/pages/view_invoice.html" data-invoice-id="INV-123ABCZ456")
+                                    //-                 i(class="fas fa-eye")
+                                    //-                 span View
+                                    //-             a(href="/src/pages/edit_invoices.html" data-invoice-id="INV-123ABCZ456")
+                                    //-                 i(class="far fa-trash-alt")
+                                    //-                 span Delete
+                                    //-             a(href="#" data-invoice-id="INV-123ABCZ456")
+                                    //-                 i(class="fas fa-envelope-open-text")
+                                    //-                 span Mark as Sent
+                                    //-             a(href="#" data-invoice-id="INV-123ABCZ456")
+                                    //-                 i(class="far fa-paper-plane")
+                                    //-                 span Send Invoice
                         div(class="table__footer")
                             div(class="table__footerData")
                                 span Showing
@@ -173,12 +173,10 @@ block content
                                     a(class="pagination__link" href="#") Previous
                                 li(class="pagination__button pagination__item pagination__item--active")
                                     a(class="pagination__link" data-pagenumber="1" href="#") 1
+                                //- li(class="pagination__button pagination__item")
+                                //-     a(class="pagination__link" data-pagenumber="2" href="#") 2
                                     
-                                li(class="pagination__button pagination__item")
-                                    a(class="pagination__link" data-pagenumber="2" href="#") 2
-                                    
-                                li(class="pagination__button pagination__item")
-                                    a(class="pagination__link" data-pagenumber="3" href="#") 3
-                                    
-                                li(class="pagination__button pagination__buttonNext ")
+                                //- li(class="pagination__button pagination__item")
+                                //-     a(class="pagination__link" data-pagenumber="3" href="#") 3
+                                li(class="pagination__button pagination__buttonNext pagination__buttonDisabled")
                                     a(class="pagination__link" href="#") Next

@@ -6,7 +6,7 @@ let validEmail = null;
 let validPassword = null;
 let validSignupEmail = null;
 let validSignupPassword = null;
-let validSignupPasswordConfirm = null;
+let validsignupConfirmPassword = null;
 //Observation for variable changes
 const observer = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
@@ -34,7 +34,7 @@ const observer = new MutationObserver(function (mutations) {
     if (
       validSignupEmail === null ||
       validSignupPassword === null ||
-      validSignupPasswordConfirm === null
+      validsignupConfirmPassword === null
     ) {
       signUpBtn.disabled = true;
       signUpBtn.classList.remove("generalButton--active");
@@ -50,12 +50,12 @@ const observer = new MutationObserver(function (mutations) {
     ) {
       validSignupPassword = true;
     } else if (
-      mutation.target.id === "signupPasswordConfirm" &&
+      mutation.target.id === "signupConfirmPassword" &&
       mutation.target.dataset.valid !== "null"
     ) {
-      validSignupPasswordConfirm = true;
+      validsignupConfirmPassword = true;
     }
-    if (validSignupEmail && validSignupPassword && validSignupPasswordConfirm) {
+    if (validSignupEmail && validSignupPassword && validsignupConfirmPassword) {
       signUpBtn.disabled = false;
       signUpBtn.classList.add("generalButton--active");
     }
@@ -147,7 +147,7 @@ export const validatedSignup = () => {
   //Signup Form
   const signupEmail = _id("signupEmail");
   const signupPassword = _id("signupPassword");
-  const signupPasswordConfirm = _id("signupPasswordConfirm");
+  const signupConfirmPassword = _id("signupConfirmPassword");
   const suggestionForm = _id("passwordSuggestion");
   const signUpBtn = _id("signUpBtn");
   const criteria = document.querySelectorAll(".passwordSuggestion__criteria");
@@ -155,7 +155,7 @@ export const validatedSignup = () => {
   if (!signupEmail) return;
   observer.observe(signupEmail, config);
   observer.observe(signupPassword, config);
-  observer.observe(signupPasswordConfirm, config);
+  observer.observe(signupConfirmPassword, config);
 
   signupEmail.addEventListener("focusout", (e) => {
     let inputValue = e.target.value;
@@ -182,37 +182,37 @@ export const validatedSignup = () => {
   signupPassword.addEventListener("focusout", (e) => {
     removeSuggestionForm(suggestionForm);
   });
-  signupPasswordConfirm.addEventListener("focusout", (e) => {
+  signupConfirmPassword.addEventListener("focusout", (e) => {
     if (
       e.target.value !== signupPassword.value &&
       e.target.value.trim().length !== 0
     ) {
       addClasses(
-        signupPasswordConfirm,
+        signupConfirmPassword,
         `Password and Password Confirm does not match!`
       );
-      signupPasswordConfirm.value = "";
-      signupPasswordConfirm.dataset.valid = "null";
-      validSignupPasswordConfirm = null;
+      signupConfirmPassword.value = "";
+      signupConfirmPassword.dataset.valid = "null";
+      validsignupConfirmPassword = null;
       return;
     }
     if (
       e.target.value === signupPassword.value &&
       e.target.value.trim().length !== 0
     ) {
-      signupPasswordConfirm.dataset.valid = true;
-      removeClasses(signupPasswordConfirm);
+      signupConfirmPassword.dataset.valid = true;
+      removeClasses(signupConfirmPassword);
     }
   });
-  signupPasswordConfirm.addEventListener("input", (e) => {
+  signupConfirmPassword.addEventListener("input", (e) => {
     if (e.target.value.trim().length === 0 || e.target.value.trim() === "") {
       addClasses(
-        signupPasswordConfirm,
+        signupConfirmPassword,
         `Password and Password Confirm does not match!`
       );
-      signupPasswordConfirm.value = "";
-      signupPasswordConfirm.dataset.valid = "null";
-      validSignupPasswordConfirm = null;
+      signupConfirmPassword.value = "";
+      signupConfirmPassword.dataset.valid = "null";
+      validsignupConfirmPassword = null;
 
       return;
     }

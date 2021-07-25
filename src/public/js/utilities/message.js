@@ -1,12 +1,12 @@
 import { _id } from "./helper.js";
 
-const loginArea = _id("login");
+const body = document.querySelector("body");
 const messageArea = `
       <div class="message" id="message">
       <p></p>
       </div>`;
 const createMessageArea = () => {
-  loginArea.insertAdjacentHTML("afterbegin", messageArea);
+  body.insertAdjacentHTML("afterbegin", messageArea);
 };
 
 const removeMessageArea = () => {

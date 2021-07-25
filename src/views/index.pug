@@ -17,13 +17,13 @@ block content
                         button(type="reset" id="cancelForgotPassword") Cancel
             div(class="container" id="container")
                 div(class="formContainer formContainer__signUpContainer")
-                    form(action="/sign-up" method="post")
+                    form(id="signUpForm")
                         h1 Create Account
-                        input(type="email" name="email" placeholder="Email" id="signupEmail" value=(user===undefined ? '' : user.email) autocomplete="off" data-valid='null')
+                        input(type="email" name="email" placeholder="Email" id="signupEmail" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
                         input(type="password" name="password" placeholder="Password" id="signupPassword" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
-                        input(type="password" name="confirm_password" placeholder="Password Confirm" id="signupPasswordConfirm" autocomplete="off" data-valid='null')
+                        input(type="password" name="confirm_password" placeholder="Password Confirm" id="signupConfirmPassword" autocomplete="off" data-valid='null')
                         p(class="errorMessage")
                         if signUpErrors
                             ul
@@ -51,7 +51,7 @@ block content
                                 i(class="fas fa-times-circle")
                                 p The password has no blank spaces
                 div(class="formContainer formContainer__signInContainer")
-                    form(action="/login" method="post" id="signInForm")
+                    form(id="signInForm")
                         h1 Sign In
                         input(type="email" name="email" placeholder="Email" id="email" autocomplete="off" data-valid='null')
                         p(class="errorMessage")

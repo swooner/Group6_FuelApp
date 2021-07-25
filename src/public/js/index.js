@@ -10,6 +10,8 @@ import { dropdownMenuHandler, dropdownMenuActionHandler } from "./UX/dropdown.js
 import { renderChart } from "./UI/chart.js";
 import { filterButtonHandler } from "./UX/filter.js";
 import { requestFuelHandler } from "./UX/requestFuel.js";
+import { logoutHandler } from "./features/logout.js";
+import { updateUserInfoHandler } from "./features/updateUserInformation.js";
 
 const signInBtn = _id("signInBtn");
 const signUpBtn = _id("signUpBtn");
