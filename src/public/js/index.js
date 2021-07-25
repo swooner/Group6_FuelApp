@@ -9,7 +9,7 @@ import { resetPassword } from "./features/resetPassword.js";
 import { dropdownMenuHandler, dropdownMenuActionHandler } from "./UX/dropdown.js";
 import { renderChart } from "./UI/chart.js";
 import { filterButtonHandler } from "./UX/filter.js";
-import { requestFuelHandler, requestNewQuoteButtonsHandler } from "./UX/requestFuel.js";
+import { requestFuelHandler, requestNewQuoteButtonsHandler, getQuote } from "./features/requestFuel.js";
 import { logoutHandler } from "./features/logout.js";
 import { updateUserInfoHandler } from "./features/updateUserInformation.js";
 

@@ -30,7 +30,7 @@ block content
                                     label(for="newFuelQuote__dateDelivery" required) Date Delivery
                                     input(type="date" name="date_delivery" id="newFuelQuote__dateDelivery"  data-validated="null" value=(quote===undefined ? '' : quote.date_delivery) required)
                                 div(class="newFuelQuote__requestFormItem")
-                                    label(for="newFuelQuote__suggestedPrice" required) Suggested Price
+                                    label(for="newFuelQuote__suggestedPrice" required) Suggested Price/ Gallon
                                     input(type="number" name="suggested_price" id="newFuelQuote__suggestedPrice" value=(quote===undefined ? '' : quote.suggested_price) required disabled)
                                     p Dollar(s)
                                 div(class="newFuelQuote__requestFormItem")
@@ -43,5 +43,5 @@ block content
                                         li!= error.msg
                                 div(class="newFuelQuote__requestFormItem")
                                     div(class="accountSettings__FormGroup newFuelQuote__requestFormItem__button")
-                                        button(class="accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton button--disabled" type="button" id="sendGetQuoteButton") Get Quote
-                                        button(class=" accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton button--disabled" type="submit" id="sendRequestNewQuoteButton") Submit Request
+                                        button(class="accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton button--disabled" type="button" id="sendGetQuoteButton" href=`/quote/request-estimate/${user.ID}`) Get Quote
+                                        button(class=" accountSettings__FormGroupSubmitButton deleteAccount__FormSubmitButton button--disabled" type="submit" id="sendRequestNewQuoteButton" href=`/quote/request-quote/${user.ID}`) Submit Request
