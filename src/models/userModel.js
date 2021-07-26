@@ -13,8 +13,6 @@ exports.findAllUser = async () => {
     });
 }
 
-
-
 exports.findUser = (email) => {
     const sqlQuery = `SELECT * FROM ClientInformation JOIN UserCredential ON ClientInformation.ID = UserCredential.ID JOIN role ON role.ID = ClientInformation.role_ID WHERE email ='${email}' ;`;
     return new Promise((resolve, reject) => {
@@ -97,6 +95,19 @@ exports.updateUserInformation = async (id, userInfo) => {
 
 exports.findQuoteHistory = async (id) => {
     const sqlQuery = `SELECT * FROM ClientInformation JOIN Fuel_Quote ON ClientInformation.ID = Fuel_Quote.ClientInformation_ID WHERE ClientInformation.ID = '${id}';`;
+    return new Promise((resolve, reject) => {
+        db.query(sqlQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            };
+            return resolve(result);
+        });
+    });
+};
+
+
+exports.findAllCustomers = async () => {
+    const sqlQuery = `SELECT *, SUM(amount_due) as total_paid FROM  ClientInformation JOIN Fuel_Quote ON ClientInformation.ID = Fuel_Quote.ClientInformation_ID GROUP BY ClientInformation.ID;`;
     return new Promise((resolve, reject) => {
         db.query(sqlQuery, (error, result) => {
             if (error) {

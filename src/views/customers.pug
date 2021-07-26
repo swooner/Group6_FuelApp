@@ -100,31 +100,33 @@ block content
                                                         i(class="fas fa-long-arrow-alt-down")
                                         th(class="sort") Actions
                                 tbody(class="table__contentBody")
-                                    //- tr
-                                    //-     td
-                                    //-         div(class="table__contentCustomerDetail")
-                                    //-             div
-                                    //-                 img(class="customerImage" src="/img/user_profile.jpg" alt="customer_img")
-                                    //-             div(class="table__contentCustomerDetailInfo")
-                                    //-                 span
-                                    //-                     a(href="/src/pages/profile.html" data-customer-id="1") Full Name                    
-                                    //-                 span +1 (713) 367 2499
-                                    //-     td maybethisisthelongestemail@gmail.com
-                                    //-     td 22 Feb 2021
-                                    //-     td Houston, TX
-                                    //-     td $1,000,000.00
-                                    //-     td
-                                    //-         div
-                                    //-             span(class="registeredStatus registeredStatus--active") Active
-                                    //-     td
-                                    //-         div(class="customerControl")
-                                    //-             button(class="customerControlButton customerControlButton--edit" data-customer-id="1")
-                                    //-                 i(class="far fa-edit") 
-                                    //-                 p Edit
+                                    if customers
+                                        each customer in customers 
+                                            tr
+                                                td
+                                                    div(class="table__contentCustomerDetail")
+                                                        div
+                                                            img(class="customerImage" src=`${customer.photo_url}` alt="customer_img")
+                                                        div(class="table__contentCustomerDetailInfo")
+                                                            span
+                                                                a(href=`/user/profile/${customer.ID}` data-customer-id=`${customers.ID}`)= `${customer.first_name} ${customer.last_name}`                   
+                                                            span=`(${customer.phone_number.substring(0,3)}) ${customer.phone_number.substring(3,6)} - ${customer.phone_number.substring(6,10)}`
+                                                td=`${customer.email}`
+                                                td=`${customer.created_at.toLocaleString('en-US',{month:'short', day:'numeric', year:'numeric'})}`
+                                                td=`${customer.city}, ${customer.state}`
+                                                td=`$${customer.total_paid}`
+                                                td
+                                                    div
+                                                        span(class="registeredStatus registeredStatus--active") Active
+                                                td
+                                                    div(class="customerControl")
+                                                        button(class="customerControlButton customerControlButton--edit" data-customer-id=`${customer.ID}`)
+                                                            i(class="far fa-edit") 
+                                                            p Edit
 
-                                    //-             button(class="customerControlButton customerControlButton--delete" data-customer-id="1")
-                                    //-                 i(class="far fa-trash-alt") 
-                                    //-                 p Delete
+                                                        button(class="customerControlButton customerControlButton--delete" data-customer-id=`${customer.ID}`)
+                                                            i(class="far fa-trash-alt") 
+                                                            p Delete
                         div(class="table__footer")
                             div(class="table__footerData")
                                 span Showing

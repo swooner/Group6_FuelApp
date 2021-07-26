@@ -28,9 +28,15 @@ exports.getDashboard = async (req, res, next) => {
         title: `SuperFuel | Dashboard`
     });
 }
-exports.getCustomers = (req, res, next) => {
 
 
+
+
+exports.getCustomers = async (req, res, next) => {
+    const customers = await User.findAllCustomers();
+    if (customers.length !== 0) {
+        res.locals.customers = customers;
+    }
     res.status(200).render('customers', {
         title: `SuperFuel | Customers Management`
     });
