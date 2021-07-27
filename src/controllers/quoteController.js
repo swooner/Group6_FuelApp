@@ -23,10 +23,12 @@ exports.requestQuote = async (req, res, next) => {
     const valid_until = formatDate(newDate);
     const quote_status = 'Requested';
     const id = req.params.id;
+    const delivery_address = `${res.locals.user.street_number} ${res.locals.user.street_name}, ${res.locals.user.city}, ${res.locals.user.state} ${res.locals.user.zip_code} ${res.locals.user.country}`;
     const quote = {
         ...req.body,
         quote_status,
         valid_until,
+        delivery_address,
         ClientInformation_ID: parseInt(id),
     }
     const isQuote = await Quote.submitNewQuote(quote);

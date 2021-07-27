@@ -88,7 +88,7 @@ block content
                                                     span(class="historyActivities__itemDate")= `${record.created_at.toLocaleString('en-US',{month:'short', day:'numeric', year:'numeric'})} `
                                                     div(class="historyActivities__itemEvent")
                                                         span= `Requested a Fuel Quote for ${record.gallons} gallons with suggested price per gallon $${new Intl.NumberFormat('en-US',{currency:'USD'}).format(record.suggested_price)} dollars.`
-                                                        span= ``
+                                                        span= `Delivery Address: ${record.delivery_address}`
                                                         span= `Total Amount Due for this Quote: $${new Intl.NumberFormat('en-US',{currency:'USD'}).format(record.amount_due)} dollars`
                      
 

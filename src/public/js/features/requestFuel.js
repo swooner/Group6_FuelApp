@@ -1,4 +1,4 @@
-import { _id } from '../utilities/helper.js';
+import { _id, getTodayDate } from '../utilities/helper.js';
 import { displayMessage } from '../utilities/message.js';
 import { loader, removeLoader } from '../utilities/loader.js';
 const currentProfilePercentage = document.querySelector('.profileContent__progressBar--percentage');
@@ -32,6 +32,9 @@ const observe = new MutationObserver((mutations) => {
         if (isGallonRequestedValid === null || isDeliveryDateValid === null) {
             sendGetQuoteButton.disabled = true;
             sendRequestNewQuoteButton.disabled = true;
+            sendGetQuoteButton.classList.add('button--disabled');
+            sendRequestNewQuoteButton.classList.add('button--disabled');
+
         }
         if (mutate.target.id === 'newFuelQuote__gallonRequested' && mutate.target.dataset.validated !== "null") {
             isGallonRequestedValid = true;
@@ -47,12 +50,30 @@ const observe = new MutationObserver((mutations) => {
 // configuration for observation function
 const config = { attributes: true };
 export const requestNewQuoteButtonsHandler = () => {
-
-
     observe.observe(gallonRequested, config);
     observe.observe(deliveryDate, config);
     // set today's date is the minimum date that user select
     deliveryDate.min = new Date().toISOString().split("T")[0];
+
+    gallonRequested.addEventListener('focusout', (e) => {
+        if (e.target.value <= 0) {
+            e.target.dataset.validated = "null";
+            isGallonRequestedValid = null;
+            displayMessage('Gallons requested must be at least 1', 'error', 3);
+            e.target.value = 1;
+        }
+    });
+    deliveryDate.addEventListener('focusout', (e) => {
+
+        const today = getTodayDate();
+        if (new Date(e.target.value - 1) < new Date()) {
+            displayMessage('Cannot select date in the past', 'error', 3);
+            e.target.dataset.validated = "null";
+            isDeliveryDateValid = null;
+            e.target.value = today;
+        };
+    })
+
 
     gallonRequested.addEventListener('input', (e) => {
         if (e.target.value.trim().length === 0) {
@@ -67,6 +88,12 @@ export const requestNewQuoteButtonsHandler = () => {
         if (e.target.value.trim().length === 0) {
             e.target.dataset.validated = "null";
             isDeliveryDateValid = null;
+            return;
+        } else if (e.target.value < getTodayDate()) {
+            e.target.dataset.validated = "null";
+            isDeliveryDateValid = null;
+            displayMessage('Cannot select date in the past', 'error', 3);
+
             return;
         }
         e.target.dataset.validated = "true";
