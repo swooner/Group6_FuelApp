@@ -36,8 +36,8 @@ block content
                                     label(for="settingInfo_image") Photo
                                     div(class="accountSettings__FormGroupUserPhoto")
                                         label(for="settingInfo_image")
-                                            img(src=`${user.photo_url}` alt="user_photo" class="settingInfo__userphoto")
-                                            input(type="file" id="settingInfo_image" value=`${user.photo_url}`)
+                                            img(src=`${user.photo_url}`  alt="user_photo" class="settingInfo__userphoto" id="settingInfo_currentUserImage")
+                                            input(type="file" name='image' accept='image/jpeg' id="settingInfo_image" value=`${user.photo_url}` href=`/user/upload-photo/${user.ID}`)
                                             span
                                                 i(class="fas fa-pencil-alt")
                                 div(class="accountSettings__FormGroup")

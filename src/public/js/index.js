@@ -12,7 +12,7 @@ import { filterButtonHandler } from "./UX/filter.js";
 import { requestFuelHandler, requestNewQuoteButtonsHandler, getQuote } from "./features/requestFuel.js";
 import { logoutHandler } from "./features/logout.js";
 import { updateUserInfoHandler } from "./features/updateUserInformation.js";
-
+import { uploadPhotoHandler } from "./features/uploadPhoto.js";
 const signInBtn = _id("signInBtn");
 const signUpBtn = _id("signUpBtn");
 

@@ -155,3 +155,15 @@ exports.findAllCustomers = async () => {
         });
     });
 }
+
+exports.updatePhotoUrl = async (id, fileName) => {
+    const sqlQuery = `UPDATE ClientInformation SET photo_url = '/img/${fileName}' WHERE ClientInformation.ID = '${id}';`;
+    return new Promise((resolve, reject) => {
+        db.query(sqlQuery, (error, result) => {
+            if (error) {
+                return reject(error);
+            };
+            return resolve(result);
+        });
+    });
+}
