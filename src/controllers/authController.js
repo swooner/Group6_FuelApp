@@ -4,6 +4,7 @@ const catchAsync = require('./../utils/catchAsync');
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 const { body, validationResult } = require('express-validator');
+const { clear } = require('console');
 
 const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET);

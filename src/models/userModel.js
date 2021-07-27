@@ -14,7 +14,25 @@ exports.findAllUser = async () => {
 }
 
 exports.findUser = (email) => {
-    const sqlQuery = `SELECT * FROM ClientInformation JOIN UserCredential ON ClientInformation.ID = UserCredential.ID JOIN role ON role.ID = ClientInformation.role_ID WHERE email ='${email}' ;`;
+    const sqlQuery = `SELECT 
+    ClientInformation.ID,
+    ClientInformation.first_name,
+     ClientInformation.last_name,
+     ClientInformation.company,
+     ClientInformation.email,
+     ClientInformation.phone_number,
+     ClientInformation.street_number,
+     ClientInformation.street_name,
+     ClientInformation.city,
+     ClientInformation.state,
+     ClientInformation.zip_code,
+     ClientInformation.country,
+     ClientInformation.photo_url,
+     ClientInformation.created_at,
+     ClientInformation.role_ID as role_ID,
+     ClientInformation.profile_percentage,
+     UserCredential.password
+     FROM ClientInformation LEFT JOIN UserCredential ON ClientInformation.ID = UserCredential.ID JOIN role ON role.ID = ClientInformation.role_ID WHERE email = '${email}'`;
     return new Promise((resolve, reject) => {
         db.query(sqlQuery, (error, result) => {
             if (error) {
@@ -27,7 +45,27 @@ exports.findUser = (email) => {
 
 
 exports.findUserById = async (id) => {
-    const sqlQuery = `SELECT * FROM ClientInformation JOIN UserCredential ON ClientInformation.ID = UserCredential.ID JOIN role ON role.ID = ClientInformation.role_ID WHERE ClientInformation.ID ='${id}' ;`;
+    const sqlQuery = ` SELECT
+    ClientInformation.ID,
+    ClientInformation.first_name,
+     ClientInformation.last_name,
+     ClientInformation.company,
+     ClientInformation.email,
+     ClientInformation.phone_number,
+     ClientInformation.street_number,
+     ClientInformation.street_name,
+     ClientInformation.city,
+     ClientInformation.state,
+     ClientInformation.zip_code,
+     ClientInformation.country,
+     ClientInformation.photo_url,
+      ClientInformation.created_at,
+     ClientInformation.role_ID as role_ID,
+     ClientInformation.profile_percentage,
+     UserCredential.password,
+     role.role_name,
+     role.role_description
+     FROM ClientInformation JOIN UserCredential ON ClientInformation.ID = UserCredential.ID JOIN role ON role.ID = ClientInformation.role_ID WHERE ClientInformation.ID ='${id}' ;`;
     return new Promise((resolve, reject) => {
         db.query(sqlQuery, (error, result) => {
             if (error) {

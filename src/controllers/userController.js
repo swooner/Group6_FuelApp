@@ -8,7 +8,6 @@ exports.getSettings = (req, res, next) => {
     });
 }
 exports.getProfile = async (req, res, next) => {
-
     const history = await User.findQuoteHistory(res.locals.user.ID);
     if (history.length !== 0) {
         res.locals.history = history;
