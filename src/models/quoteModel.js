@@ -32,6 +32,7 @@ const getFactor = async (id, gallons) => {
     totalFactor = parseFloat(companyProfitFactor) + parseFloat(locationFactor) - parseFloat(rateHistoryFactor) + parseFloat(gallonRequestedFactor);
     return totalFactor;
 }
+exports.getFactor = getFactor;
 
 const getMargin = async (id, gallons) => {
     const totalFactor = await getFactor(id, gallons);
@@ -39,6 +40,8 @@ const getMargin = async (id, gallons) => {
     let totalMargin = currentPricePerGallon * totalFactor;
     return totalMargin;
 }
+
+exports.getMargin = getMargin;
 
 exports.getEstimate = async (id, gallons) => {
     const totalMargin = await getMargin(id, gallons);

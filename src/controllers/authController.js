@@ -10,6 +10,8 @@ const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET);
 };
 
+exports.signToken = signToken;
+
 const createSendToken = async (user, statusCode, res) => {
     const token = signToken(user.ID);
     res.cookie('jwt', token).status(statusCode).json({
@@ -21,8 +23,11 @@ const createSendToken = async (user, statusCode, res) => {
             user
         }
     });
-
 };
+
+
+exports.createSendToken = signToken;
+
 // Sign up user 
 exports.signUp = [
     body('email').trim().not().isEmpty().withMessage('Email cannot be Empty').isEmail().withMessage('Email is not valid').custom(email => {
@@ -140,6 +145,7 @@ exports.protect = catchAsync(async (req, res, next) => {
             statusCode: 401,
             message: 'Please sign-in to continue.',
         });
+        return;
     }
     // 2) Verification token
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -151,6 +157,7 @@ exports.protect = catchAsync(async (req, res, next) => {
             statusCode: 401,
             message: 'This user no longer exist!',
         });
+        return;
     }
 
     // GRANT ACCESS TO PROTECTED ROUTE
@@ -161,12 +168,11 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restricted = catchAsync(async (req, res, next) => {
     //check if current user has administrator privilege or customer
-    if (res.locals.user.role_name === 'customer') {
+    if ( res.locals.user.role_name === 'customer') {
         return res.render('error', {
             title: 'Restricted Routes',
             statusCode: 401,
             message: 'You do not have permission to access this route!',
-
         });
     }
     next();

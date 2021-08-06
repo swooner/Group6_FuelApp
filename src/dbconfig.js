@@ -4,10 +4,10 @@ const mysql = require('mysql');
 
 
 const config = {
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME,
+    host: 'localhost',//process.env.DATABASE_HOST,
+    user: 'root',//process.env.DATABASE_USER,
+    password: 'password',//process.env.DATABASE_PASSWORD,
+    database: 'fueldb',//process.env.DATABASE_NAME,
 };
 
 const db = mysql.createConnection(config);

@@ -84,6 +84,7 @@ export const getQuote = async () => {
         gallons: gallonRequested.value,
         delivery_date: deliveryDate.value,
     }
+    console.log( 'reqBody:', reqBody );
     try {
         loader(body);
         const result = await fetch(`${url}`, {

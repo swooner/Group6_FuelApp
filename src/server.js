@@ -12,6 +12,6 @@ DBconnection.connect((err) => {
         console.log('Connection to database has been established successfully!');
     }
 })
-const server = app.listen(PORT, () => {
+module.exports = app.listen(PORT, () => {
     console.log(`Application is running on ${PORT}...`);
 });

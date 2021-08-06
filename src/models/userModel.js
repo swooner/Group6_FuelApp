@@ -81,12 +81,15 @@ const createPasswordCredential = async (password) => {
     return new Promise((resolve, reject) => {
         db.query(sqlQuery, (error, result) => {
             if (error) {
+                console.log( 'error:', error );
                 return reject(error);
             };
             return resolve(result);
         });
     });
 }
+
+exports.createPasswordCredential = createPasswordCredential;
 
 exports.createCredential = async (email, password) => {
     const hashPassword = await bcrypt.hash(password, 15);
