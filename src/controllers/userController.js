@@ -59,7 +59,6 @@ exports.getProfile = async (req, res, next) => {
     if (history.length !== 0) {
         res.locals.history = history;
     };
-
     res.status(200).render('profile', {
         title: 'SuperFuel | User Profile',
     });

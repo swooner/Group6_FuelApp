@@ -46,6 +46,7 @@ CREATE TABLE Fuel_Quote (
     ClientInformation_ID BIGINT NOT NULL,
     gallons FLOAT,
     delivery_date DATE,
+	delivery_address VARCHAR (512),
     suggested_price FLOAT,
     amount_due FLOAT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -54,4 +55,3 @@ CREATE TABLE Fuel_Quote (
     PRIMARY KEY(ID),
     FOREIGN KEY (ClientInformation_ID) REFERENCES ClientInformation(ID) ON DELETE CASCADE
 ) ENGINE = INNODB;
-INSERT INTO role (ID,role_name,role_description) VALUES (1,'administrator', 'Get full access'),(2,'customer','Only Profile, Settings, Request Quotes allowed');
